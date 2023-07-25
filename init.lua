@@ -1,2 +1,1 @@
-require("varunCustom")
-
+require("lazyManager")
