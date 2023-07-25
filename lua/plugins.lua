@@ -36,4 +36,5 @@ return {
 	{ 'akinsho/toggleterm.nvim',   version = "*",                                   config = true }, -- Toggelable terminal
 	{ "lewis6991/gitsigns.nvim" },                                                            -- Git Signs (Gutter Indicators)
 	{ 'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } },        -- Status Line
+	{ 'kevinhwang91/nvim-bqf' }                                                               -- QuickFix window alternative
 }
