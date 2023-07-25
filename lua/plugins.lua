@@ -32,7 +32,8 @@ return {
 			{ 'L3MON4D3/LuaSnip' }, -- Required
 		}
 	},
-	{ "scalameta/nvim-metals",   dependencies = { "mfussenegger/nvim-dap" } },        -- Scala LSP
-	{ 'akinsho/toggleterm.nvim', version = "*",                             config = true }, -- Toggelable terminal
-	{ "lewis6991/gitsigns.nvim" },                                                    -- Git Signs (Gutter Indicators)
+	{ "scalameta/nvim-metals",     dependencies = { "mfussenegger/nvim-dap" } },              -- Scala LSP
+	{ 'akinsho/toggleterm.nvim',   version = "*",                                   config = true }, -- Toggelable terminal
+	{ "lewis6991/gitsigns.nvim" },                                                            -- Git Signs (Gutter Indicators)
+	{ 'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } },        -- Status Line
 }
