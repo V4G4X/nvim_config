@@ -1,3 +1,4 @@
 /plugin
 !after/plugin/
 .vscode
+lazy-lock.json

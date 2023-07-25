@@ -1,9 +1,10 @@
 -- Contains color pallettes, backgrounds and other aesthetic overrides
 function SetCatppuccinTheme()
 	require("catppuccin").setup({
+		-- require("after.plugins.catppuccin").setup({
 		flavour = "mocha", -- latte, frappe, macchiato, mocha
 		background = {
-		     -- :h background
+			-- :h background
 			light = "latte",
 			dark = "mocha",
 		},
@@ -32,7 +33,7 @@ function SetCatppuccinTheme()
 
 	-- setup must be called before loading
 	vim.cmd.colorscheme "catppuccin"
-    vim.cmd('hi LineNr guifg=#AAAAAA') -- Set Line Number coloring to be lighter than the theme default
+	vim.cmd('hi LineNr guifg=#AAAAAA') -- Set Line Number coloring to be lighter than the theme default
 end
 
 if not vim.g.vscode then SetCatppuccinTheme() end
