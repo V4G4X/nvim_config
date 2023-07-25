@@ -1,3 +1,4 @@
+-- Plugins
 require("core.plugin_configs.colorscheme")
 require("core.plugin_configs.nvimtree")
 require("core.plugin_configs.fugitive")
@@ -9,3 +10,6 @@ require("core.plugin_configs.metals")
 require("core.plugin_configs.toggleterm")
 require("core.plugin_configs.gitsigns")
 require("core.plugin_configs.lualine")
+
+-- Nvim Settings
+require("core.settings")
