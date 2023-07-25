@@ -10,8 +10,8 @@ if not vim.loop.fs_stat(lazypath) then
     })
 end
 vim.opt.rtp:prepend(lazypath)
+vim.g.mapleader = " " -- Make sure to set `mapleader` before lazy so your mappings are correct
 require("lazy").setup("plugins")
 
 -- Load plugin configurations
 require("core.plugin_configs")
-
