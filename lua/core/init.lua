@@ -10,6 +10,7 @@ require("core.plugin_configs.metals")
 require("core.plugin_configs.toggleterm")
 require("core.plugin_configs.gitsigns")
 require("core.plugin_configs.lualine")
+require("core.plugin_configs.lazygit")
 
 -- Nvim Settings
 require("core.settings")
