@@ -9,6 +9,7 @@ function InitLspPlugin()
 
         -- Key maps
         vim.keymap.set("n", "<C-]>", function() vim.lsp.buf.definition() end, opts)
+        vim.keymap.set("n", "<leader>lt", function() vim.lsp.buf.type_definition() end, opts)
         vim.keymap.set("n", "<leader>lh", function() vim.lsp.buf.hover() end, opts)
         vim.keymap.set("n", "<leader>lsw", function() vim.lsp.buf.workspace_symbol() end, opts)
         vim.keymap.set("n", "<leader>lsd", function() vim.lsp.buf.document_symbol() end, opts)
