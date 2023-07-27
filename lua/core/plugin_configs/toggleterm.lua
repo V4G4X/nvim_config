@@ -6,7 +6,7 @@ function InitToggleTerm()
         direction = "float",
     })
 
-    vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', { noremap = true })
+    -- vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', { noremap = true })
 end
 
 if not vim.g.vscode then InitToggleTerm() end
