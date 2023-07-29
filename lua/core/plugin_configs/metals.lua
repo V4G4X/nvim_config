@@ -3,7 +3,6 @@
 ----------------------------------
 
 function InitMetals()
-
     local api = vim.api
     local metals_config = require("metals").bare_config()
 
@@ -63,6 +62,10 @@ function InitMetals()
         group = nvim_metals_group,
     })
 
+
+    -- telescope commands for Metals
+    local telescope = require('telescope')
+    vim.keymap.set('n', '<leader>lP', telescope.extensions.metals.commands, {})
 end
 
 if not vim.g.vscode then InitMetals() end
