@@ -20,8 +20,14 @@ function InitLspPlugin()
     end)
 
 
-    -- (Optional) Configure lua language server for neovim
-    require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+    -- (Optional) Configure lua language servers for neovim
+    local lspconfig = require('lspconfig')
+    lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
+    lspconfig.gopls.setup({
+        settings = {
+            gopls = { gofumpt = true }
+        }
+    })
 
     lsp.setup()
 end
