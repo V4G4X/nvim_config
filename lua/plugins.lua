@@ -25,11 +25,11 @@ return {
                 end,
             },
             { 'williamboman/mason-lspconfig.nvim' }, -- Optional
-
+            { 'nvimtools/none-ls.nvim' },            -- Optional
             -- Autocompletion
-            { 'hrsh7th/nvim-cmp' },     -- Required
-            { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-            { 'L3MON4D3/LuaSnip' },     -- Required
+            { 'hrsh7th/nvim-cmp' },                  -- Required
+            { 'hrsh7th/cmp-nvim-lsp' },              -- Required
+            { 'L3MON4D3/LuaSnip' },                  -- Required
         }
     },
     { "scalameta/nvim-metals",     dependencies = { "mfussenegger/nvim-dap" } },                     -- Scala LSP
@@ -38,5 +38,5 @@ return {
     { 'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } },               -- Status Line
     { 'kevinhwang91/nvim-bqf' },                                                                     -- QuickFix window alternative
     { "kdheepak/lazygit.nvim",     dependencies = { "nvim-lua/plenary.nvim" } },                     -- LazyGit floating window
-    { 'neoclide/coc.nvim', branch = 'release' }, -- VS Code like LSP
+    { 'neoclide/coc.nvim',         branch = 'release' },                                             -- VS Code like LSP
 }
