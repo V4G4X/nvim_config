@@ -38,5 +38,5 @@ return {
     { 'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } },               -- Status Line
     { 'kevinhwang91/nvim-bqf' },                                                                     -- QuickFix window alternative
     { "kdheepak/lazygit.nvim",     dependencies = { "nvim-lua/plenary.nvim" } },                     -- LazyGit floating window
-    { 'neoclide/coc.nvim',         branch = 'release' },                                             -- VS Code like LSP
+    -- { 'neoclide/coc.nvim',         branch = 'release' },                                             -- VS Code like LSP
 }
