@@ -39,4 +39,17 @@ return {
     { 'kevinhwang91/nvim-bqf' },                                                                     -- QuickFix window alternative
     { "kdheepak/lazygit.nvim",     dependencies = { "nvim-lua/plenary.nvim" } },                     -- LazyGit floating window
     -- { 'neoclide/coc.nvim',         branch = 'release' },                                             -- VS Code like LSP
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        init = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+        end,
+        opts = {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+        }
+    }
 }
