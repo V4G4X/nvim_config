@@ -1,11 +1,17 @@
 if not vim.g.vscode then
     local builtin = require('telescope.builtin')
-    vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-    vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-    vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-    vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-    vim.keymap.set('n', '<C-p>', builtin.git_files, {})
 
-    -- Trigger empty Telescope prompt with <leader>ff
-    vim.keymap.set('n', '<leader>fP', [[<cmd>Telescope<CR>]], { noremap = true, silent = true })
+    -- Key maps
+    require("which-key").register({
+        f = {
+            name = "Telescope", -- optional group name
+            f = { builtin.find_files, "Find Files" },
+            g = { builtin.live_grep, "Live Grep" },
+            b = { builtin.buffers, "Buffers" },
+            H = { builtin.help_tags, "Help Tags" },
+            G = { builtin.git_files, "Git Files" },
+            -- Trigger empty Telescope prompt with <leader>fP
+            P = { "<cmd>Telescope<cr>", "Telescope Menu", noremap = true, silent = true },
+        },
+    }, { prefix = "<leader>" })
 end

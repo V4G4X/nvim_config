@@ -23,7 +23,10 @@ function InitNvimTree()
     })
 
     local nvimTreeApi = require("nvim-tree.api")
-    vim.keymap.set("n", "<leader>e", nvimTreeApi.tree.toggle)
+    -- Key maps
+    require("which-key").register({
+        e = { nvimTreeApi.tree.toggle, "Explorer" },
+    }, { prefix = "<leader>" })
 end
 
 if not vim.g.vscode then InitNvimTree() end

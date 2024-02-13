@@ -7,16 +7,33 @@ function InitLspPlugin()
         lspZero.default_keymaps({ buffer = bufnr })
         local opts = { buffer = bufnr, remap = false }
 
+        local telescopeBuiltin = require("telescope.builtin")
+
         -- Key maps
-        vim.keymap.set("n", "<C-]>", function() vim.lsp.buf.definition() end, opts)
-        vim.keymap.set("n", "<leader>lt", function() vim.lsp.buf.type_definition() end, opts)
-        vim.keymap.set("n", "<leader>lh", function() vim.lsp.buf.hover() end, opts)
-        vim.keymap.set("n", "<leader>lsw", function() vim.lsp.buf.workspace_symbol() end, opts)
-        vim.keymap.set("n", "<leader>lsd", function() vim.lsp.buf.document_symbol() end, opts)
-        vim.keymap.set("n", "<leader>lf", function() vim.lsp.buf.format() end, opts)
-        vim.keymap.set("n", "<leader>lr", function() vim.lsp.buf.references() end, opts)
-        vim.keymap.set("n", "<leader>lR", function() vim.lsp.buf.rename() end, opts)
-        vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+        require("which-key").register({
+            l = {
+                name = "LSP", -- optional group name
+                a = { vim.lsp.buf.code_action, "Code Actions" },
+                d = { vim.lsp.buf.definition, "Definition" },
+                t = { vim.lsp.buf.type_definition, "Type Definition" },
+                h = { vim.lsp.buf.hover, "Hover" },
+                s = {
+                    name = "Symbols",
+                    w = { telescopeBuiltin.lsp_dynamic_workspace_symbols, "Workspace" },
+                    d = { telescopeBuiltin.lsp_document_symbols, "Document" },
+                },
+                e = { telescopeBuiltin.diagnostics, "Diagnostics" },
+                f = { vim.lsp.buf.format, "Format" },
+                r = { vim.lsp.buf.references, "References" },
+                R = { vim.lsp.buf.rename, "Rename" },
+                i = { telescopeBuiltin.lsp_implementations, "Implementations" },
+                c = {
+                    name = "Calls",
+                    i = { telescopeBuiltin.lsp_incoming_calls, "Incoming" },
+                    o = { telescopeBuiltin.lsp_outgoing_calls, "Outgoing" },
+                }
+            },
+        }, { prefix = "<leader>" })
     end)
 
 
