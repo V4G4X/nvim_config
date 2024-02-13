@@ -1,10 +1,10 @@
 -- Initialise LSP plugin
 
 function InitLspPlugin()
-    local lsp = require('lsp-zero').preset({})
+    local lspZero = require('lsp-zero').preset({})
 
-    lsp.on_attach(function(client, bufnr)
-        lsp.default_keymaps({ buffer = bufnr })
+    lspZero.on_attach(function(client, bufnr)
+        lspZero.default_keymaps({ buffer = bufnr })
         local opts = { buffer = bufnr, remap = false }
 
         -- Key maps
@@ -22,14 +22,24 @@ function InitLspPlugin()
 
     -- (Optional) Configure lua language servers for neovim
     local lspconfig = require('lspconfig')
-    lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
+    lspconfig.lua_ls.setup(lspZero.nvim_lua_ls())
     lspconfig.gopls.setup({
+        cmd = { "gopls" },
+        filetypes = { "go", "gomod", "gowork", "gotmpl" },
+        single_file_support = true,
         settings = {
-            gopls = { gofumpt = true }
-        }
+            gopls = {
+                gofumpt = true,
+                staticcheck = true,
+                usePlaceholders = true,
+                analyses = {
+                    unusedparams = true,
+                }
+            }
+        },
     })
 
-    lsp.setup()
+    lspZero.setup()
 end
 
 if not vim.g.vscode then InitLspPlugin() end
