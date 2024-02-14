@@ -51,5 +51,6 @@ return {
             -- or leave it empty to use the default settings
             -- refer to the configuration section below
         }
-    }
+    },
+    { 'numToStr/Comment.nvim', config = function() require "Comment".setup() end, lazy = false }, -- Adding Language aware Commenenting
 }
