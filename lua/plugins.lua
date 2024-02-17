@@ -47,7 +47,8 @@ return {
             vim.o.timeoutlen = 300
         end,
     },
-    { 'numToStr/Comment.nvim',     config = function() require "Comment".setup() end,                      lazy = false },                                 -- Adding Language aware Commenenting
-    { 'akinsho/bufferline.nvim',   dependencies = 'nvim-tree/nvim-web-devicons',                           version = "*" },                                -- bufferline adds Tabs to Buffers
-    { "startup-nvim/startup.nvim", config = function() require "startup".setup({ theme = "startify" }) end },                                              -- Startup Page
+    { 'numToStr/Comment.nvim',     config = function() require "Comment".setup() end,                      lazy = false },  -- Adding Language aware Commenenting
+    { 'akinsho/bufferline.nvim',   dependencies = 'nvim-tree/nvim-web-devicons',                           version = "*" }, -- bufferline adds Tabs to Buffers
+    { "startup-nvim/startup.nvim", config = function() require "startup".setup({ theme = "startify" }) end },               -- Startup Page
+    { 'stevearc/oil.nvim',         dependencies = { "nvim-tree/nvim-web-devicons" },                       opts = {}, },    -- Manage Files in a Buffer-like editor
 }
