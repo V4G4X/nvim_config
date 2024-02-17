@@ -33,7 +33,7 @@ return {
         }
     },
     { "scalameta/nvim-metals",     dependencies = { "mfussenegger/nvim-dap" } },                     -- Scala LSP
-    { 'akinsho/toggleterm.nvim',   version = "*",                                   config = true }, -- Toggelable terminal
+    { 'akinsho/toggleterm.nvim',   config = true,                                   version = "*" }, -- Toggelable terminal
     { "lewis6991/gitsigns.nvim" },                                                                   -- Git Signs (Gutter Indicators)
     { 'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } },               -- Status Line
     { 'kevinhwang91/nvim-bqf' },                                                                     -- QuickFix window alternative
@@ -46,12 +46,8 @@ return {
             vim.o.timeout = true
             vim.o.timeoutlen = 300
         end,
-        opts = {
-            -- your configuration comes here
-            -- or leave it empty to use the default settings
-            -- refer to the configuration section below
-        }
     },
-    { 'numToStr/Comment.nvim',   config = function() require "Comment".setup() end, lazy = false },  -- Adding Language aware Commenenting
-    { 'akinsho/bufferline.nvim', dependencies = 'nvim-tree/nvim-web-devicons',      version = "*" }, -- bufferline adds Tabs to Buffers
+    { 'numToStr/Comment.nvim',     config = function() require "Comment".setup() end,                      lazy = false },                                 -- Adding Language aware Commenenting
+    { 'akinsho/bufferline.nvim',   dependencies = 'nvim-tree/nvim-web-devicons',                           version = "*" },                                -- bufferline adds Tabs to Buffers
+    { "startup-nvim/startup.nvim", config = function() require "startup".setup({ theme = "startify" }) end },                                              -- Startup Page
 }
