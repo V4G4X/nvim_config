@@ -1,17 +1,17 @@
 return {
-    { "catppuccin/nvim",                name = "catppuccin", priority = 1000 }, -- Theme
+    { "catppuccin/nvim",                 name = "catppuccin",                                             priority = 1000 }, -- Theme
     {
-        "nvim-tree/nvim-tree.lua",                                              -- Tree Explorer
+        "nvim-tree/nvim-tree.lua",                                                                                           -- Tree Explorer
         version = "*",
         lazy = false,
         dependencies = { "nvim-tree/nvim-web-devicons", },
         config = function() require("nvim-tree").setup {} end,
     },
-    { "tpope/vim-fugitive" },                                                                              -- Git Tools
-    { "nvim-lua/plenary.nvim" },                                                                           -- Library of functions
-    { 'nvim-telescope/telescope.nvim',  tag = '0.1.2',       dependencies = { 'nvim-lua/plenary.nvim' } }, -- File Operations
-    { "nvim-treesitter/nvim-treesitter" },                                                                 -- Parsers
-    { "sanfusu/neovim-undotree" },                                                                         -- UndoTree
+    { "tpope/vim-fugitive" },                                                                                              -- Git Tools
+    { "nvim-lua/plenary.nvim" },                                                                                           -- Library of functions
+    { 'nvim-telescope/telescope.nvim',   dependencies = { 'nvim-lua/plenary.nvim' },                      tag = '0.1.2' }, -- File Operations
+    { "nvim-treesitter/nvim-treesitter", dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" } },               -- Parsers
+    { "sanfusu/neovim-undotree" },                                                                                         -- UndoTree
     {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
