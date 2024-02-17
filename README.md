@@ -10,6 +10,7 @@ Or just go back to VS Code, Occam's Razer is real.
 ## Clone
 
 Don't forget the repo into the following path:
+
 ```sh
 gh repo clone V4G4X/nvim_config ~/.config/nvim
 ```

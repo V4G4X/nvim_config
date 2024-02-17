@@ -52,5 +52,6 @@ return {
             -- refer to the configuration section below
         }
     },
-    { 'numToStr/Comment.nvim', config = function() require "Comment".setup() end, lazy = false }, -- Adding Language aware Commenenting
+    { 'numToStr/Comment.nvim',   config = function() require "Comment".setup() end, lazy = false },  -- Adding Language aware Commenenting
+    { 'akinsho/bufferline.nvim', dependencies = 'nvim-tree/nvim-web-devicons',      version = "*" }, -- bufferline adds Tabs to Buffers
 }
