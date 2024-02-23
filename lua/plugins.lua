@@ -57,4 +57,5 @@ return {
         ft = { "markdown" },
         build = function() vim.fn["mkdp#util#install"]() end,                      -- install without yarn or npm
     },
+    { 'yorickpeterse/nvim-pqf', config = function() require('pqf').setup() end, }, -- Formats the QuickFix window a little better
 }
