@@ -51,4 +51,10 @@ return {
     { 'akinsho/bufferline.nvim',   dependencies = 'nvim-tree/nvim-web-devicons',                           version = "*" }, -- bufferline adds Tabs to Buffers
     { "startup-nvim/startup.nvim", config = function() require "startup".setup({ theme = "startify" }) end },               -- Startup Page
     { 'stevearc/oil.nvim',         dependencies = { "nvim-tree/nvim-web-devicons" },                       opts = {}, },    -- Manage Files in a Buffer-like editor
+    {
+        "iamcco/markdown-preview.nvim",
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        ft = { "markdown" },
+        build = function() vim.fn["mkdp#util#install"]() end,                      -- install without yarn or npm
+    },
 }
