@@ -60,4 +60,5 @@ return {
     { 'yorickpeterse/nvim-pqf', config = function() require('pqf').setup() end, },                      -- Formats the QuickFix window a little better
     { 'nvim-focus/focus.nvim',  config = function() require('focus').setup() end, version = '*' },      -- Window Resizer
     { 'stevearc/dressing.nvim', opts = {} },                                                            -- Improves the default Vim interfaces
+    { 'rcarriga/nvim-notify' },                                                                         -- A better looking notification system
 }
