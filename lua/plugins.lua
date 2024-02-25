@@ -95,5 +95,11 @@ return {
             model = "gemma:2b-instruct",
         }
     },
-
+    {
+        'VonHeikemen/fine-cmdline.nvim',
+        dependencies = { 'MunifTanjim/nui.nvim' },
+        config = function()
+            vim.api.nvim_set_keymap('n', '<leader>c', '<cmd>FineCmdline<CR>', { noremap = true, desc = "Command Line" })
+        end
+    },    -- Cool Command Line
 }
