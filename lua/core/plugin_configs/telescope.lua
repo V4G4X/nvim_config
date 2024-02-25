@@ -10,8 +10,9 @@ if not vim.g.vscode then
             b = { builtin.buffers, "Buffers" },
             H = { builtin.help_tags, "Help Tags" },
             G = { builtin.git_files, "Git Files" },
-            -- Trigger empty Telescope prompt with <leader>fP
-            P = { "<cmd>Telescope<cr>", "Telescope Menu", noremap = true, silent = true },
+            -- Trigger empty Telescope prompt with <leader>fT
+            T = { "<cmd>Telescope<cr>", "Telescope Menu", noremap = true, silent = true },
+            p = { "<cmd>Telescope commands<cr>", "Commands", noremap = true, silent = true },
         },
     }, { prefix = "<leader>" })
 end

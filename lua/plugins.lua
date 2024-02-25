@@ -55,10 +55,11 @@ return {
         "iamcco/markdown-preview.nvim",
         cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
         ft = { "markdown" },
-        build = function() vim.fn["mkdp#util#install"]() end,                                           -- install without yarn or npm
+        build = function() vim.fn["mkdp#util#install"]() end,                                              -- install without yarn or npm
     },
-    { 'yorickpeterse/nvim-pqf', config = function() require('pqf').setup() end, },                      -- Formats the QuickFix window a little better
-    { 'nvim-focus/focus.nvim',  config = function() require('focus').setup() end, version = '*' },      -- Window Resizer
-    { 'stevearc/dressing.nvim', opts = {} },                                                            -- Improves the default Vim interfaces
-    { 'rcarriga/nvim-notify' },                                                                         -- A better looking notification system
+    { 'yorickpeterse/nvim-pqf',         config = function() require('pqf').setup() end, },                 -- Formats the QuickFix window a little better
+    { 'nvim-focus/focus.nvim',          config = function() require('focus').setup() end, version = '*' }, -- Window Resizer
+    { 'stevearc/dressing.nvim',         opts = {} },                                                       -- Improves the default Vim interfaces
+    { 'rcarriga/nvim-notify' },                                                                            -- A better looking notification system
+    { "LintaoAmons/easy-commands.nvim", event = "VeryLazy" },                                              -- A central interface to look up commands across plugins
 }
