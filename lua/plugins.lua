@@ -55,8 +55,9 @@ return {
         "iamcco/markdown-preview.nvim",
         cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
         ft = { "markdown" },
-        build = function() vim.fn["mkdp#util#install"]() end,                                      -- install without yarn or npm
+        build = function() vim.fn["mkdp#util#install"]() end,                                           -- install without yarn or npm
     },
-    { 'yorickpeterse/nvim-pqf', config = function() require('pqf').setup() end, },                 -- Formats the QuickFix window a little better
-    { 'nvim-focus/focus.nvim',  config = function() require('focus').setup() end, version = '*' }, -- Window Resizer
+    { 'yorickpeterse/nvim-pqf', config = function() require('pqf').setup() end, },                      -- Formats the QuickFix window a little better
+    { 'nvim-focus/focus.nvim',  config = function() require('focus').setup() end, version = '*' },      -- Window Resizer
+    { 'stevearc/dressing.nvim', opts = {} },                                                            -- Improves the default Vim interfaces
 }
