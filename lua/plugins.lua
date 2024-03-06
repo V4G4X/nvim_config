@@ -71,4 +71,5 @@ return {
     },                                                                                   -- Cool Command Line
     { "David-Kunz/gen.nvim" },                                                           -- Runs prompts for Ollama models
     { "vinnymeller/swagger-preview.nvim", build = "npm install -g swagger-ui-watcher" }, -- Preview for Swagger Files
+    { 'echasnovski/mini.nvim',            version = '*' },                               -- Animations
 }
