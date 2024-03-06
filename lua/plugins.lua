@@ -68,8 +68,9 @@ return {
         config = function()
             vim.api.nvim_set_keymap('n', '<leader>c', '<cmd>FineCmdline<CR>', { noremap = true, desc = "Command Line" })
         end
-    },                                                                                   -- Cool Command Line
-    { "David-Kunz/gen.nvim" },                                                           -- Runs prompts for Ollama models
-    { "vinnymeller/swagger-preview.nvim", build = "npm install -g swagger-ui-watcher" }, -- Preview for Swagger Files
-    { 'echasnovski/mini.nvim',            version = '*' },                               -- Animations
+    },                                                                                                       -- Cool Command Line
+    { "David-Kunz/gen.nvim" },                                                                               -- Runs prompts for Ollama models
+    { "vinnymeller/swagger-preview.nvim", build = "npm install -g swagger-ui-watcher" },                     -- Preview for Swagger Files
+    { 'echasnovski/mini.nvim',            version = '*' },                                                   -- Animations
+    { 'TabbyML/vim-tabby',                config = function() vim.g.tabby_keybinding_accept = '<Tab>' end }, -- Local Completion using HuggingFace models
 }
