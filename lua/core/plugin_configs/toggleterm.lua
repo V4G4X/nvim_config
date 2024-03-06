@@ -2,7 +2,7 @@
 
 function InitToggleTerm()
     require("toggleterm").setup({
-        open_mapping = '<C-`>',
+        open_mapping = '<c-t>',
         direction = "float",
     })
 
