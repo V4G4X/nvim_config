@@ -21,6 +21,7 @@ function InitBufferLine()
             name = "Buffers",
             b = { "<cmd>BufferLinePick<cr>", "Pick Buffer" },
             c = { "<cmd>BufferLineCloseOthers<cr>", "Close other Buffers" },
+            d = { "<cmd>bdelete<cr>", "Delete current buffer" },
             n = { "<cmd>BufferLineCycleNext<cr>", "Cycle Next" },
             N = { "<cmd>BufferLineCyclePrev<cr>", "Cycle Prev" },
             p = { "<cmd>BufferLineTogglePin<cr>", "Toggle Pin" },
