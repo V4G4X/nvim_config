@@ -73,4 +73,5 @@ return {
     { "vinnymeller/swagger-preview.nvim", build = "npm install -g swagger-ui-watcher" },                     -- Preview for Swagger Files
     { 'echasnovski/mini.nvim',            version = '*' },                                                   -- Animations
     { 'TabbyML/vim-tabby',                config = function() vim.g.tabby_keybinding_accept = '<Tab>' end }, -- Local Completion using HuggingFace models
+    { "folke/trouble.nvim",               dependencies = { "nvim-tree/nvim-web-devicons" } }                 -- Pretty Diagnostics
 }
