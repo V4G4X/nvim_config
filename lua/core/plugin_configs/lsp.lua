@@ -72,3 +72,6 @@ function InitLspPlugin()
 end
 
 if not vim.g.vscode then InitLspPlugin() end
+
+vim.keymap.set("n", "]g", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
+vim.keymap.set("n", "[g", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
