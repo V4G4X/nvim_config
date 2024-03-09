@@ -1,6 +1,7 @@
 -- Plugins
 require("core.plugin_configs.animate")
 require("core.plugin_configs.bufferline")
+require("core.plugin_configs.calltree")
 require("core.plugin_configs.colorscheme")
 require("core.plugin_configs.fugitive")
 require("core.plugin_configs.gen")
