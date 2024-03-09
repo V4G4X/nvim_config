@@ -47,31 +47,26 @@ return {
             vim.o.timeoutlen = 300
         end,
     },
-    { 'numToStr/Comment.nvim',     config = function() require "Comment".setup() end,                      lazy = false },  -- Adding Language aware Commenenting
-    { 'akinsho/bufferline.nvim',   dependencies = 'nvim-tree/nvim-web-devicons',                           version = "*" }, -- bufferline adds Tabs to Buffers
-    { "startup-nvim/startup.nvim", config = function() require "startup".setup({ theme = "startify" }) end },               -- Startup Page
-    { 'stevearc/oil.nvim',         dependencies = { "nvim-tree/nvim-web-devicons" },                       opts = {}, },    -- Manage Files in a Buffer-like editor
-    {
-        "iamcco/markdown-preview.nvim",
-        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-        ft = { "markdown" },
-        build = function() vim.fn["mkdp#util#install"]() end,                                              -- install without yarn or npm
-    },
-    { 'yorickpeterse/nvim-pqf',         config = function() require('pqf').setup() end, },                 -- Formats the QuickFix window a little better
-    { 'nvim-focus/focus.nvim',          config = function() require('focus').setup() end, version = '*' }, -- Window Resizer
-    { 'stevearc/dressing.nvim',         opts = {} },                                                       -- Improves the default Vim interfaces
-    { 'rcarriga/nvim-notify' },                                                                            -- A better looking notification system
-    { "LintaoAmons/easy-commands.nvim", event = "VeryLazy" },                                              -- A central interface to look up commands across plugins
+    { 'numToStr/Comment.nvim',          config = function() require "Comment".setup() end,                      lazy = false },  -- Adding Language aware Commenenting
+    { 'akinsho/bufferline.nvim',        dependencies = 'nvim-tree/nvim-web-devicons',                           version = "*" }, -- bufferline adds Tabs to Buffers
+    { "startup-nvim/startup.nvim",      config = function() require "startup".setup({ theme = "startify" }) end },               -- Startup Page
+    { 'stevearc/oil.nvim',              dependencies = { "nvim-tree/nvim-web-devicons" },                       opts = {}, },    -- Manage Files in a Buffer-like editor
+    { 'yorickpeterse/nvim-pqf',         config = function() require('pqf').setup() end, },                                       -- Formats the QuickFix window a little better
+    { 'nvim-focus/focus.nvim',          config = function() require('focus').setup() end,                       version = '*' }, -- Window Resizer
+    { 'stevearc/dressing.nvim',         opts = {} },                                                                             -- Improves the default Vim interfaces
+    { 'rcarriga/nvim-notify' },                                                                                                  -- A better looking notification system
+    { "LintaoAmons/easy-commands.nvim", event = "VeryLazy" },                                                                    -- A central interface to look up commands across plugins
     {
         'VonHeikemen/fine-cmdline.nvim',
         dependencies = { 'MunifTanjim/nui.nvim' },
         config = function()
             vim.api.nvim_set_keymap('n', '<leader>c', '<cmd>FineCmdline<CR>', { noremap = true, desc = "Command Line" })
         end
-    },                                                                                                       -- Cool Command Line
-    { "David-Kunz/gen.nvim" },                                                                               -- Runs prompts for Ollama models
-    { "vinnymeller/swagger-preview.nvim", build = "npm install -g swagger-ui-watcher" },                     -- Preview for Swagger Files
-    { 'echasnovski/mini.nvim',            version = '*' },                                                   -- Animations
-    { 'TabbyML/vim-tabby',                config = function() vim.g.tabby_keybinding_accept = '<Tab>' end }, -- Local Completion using HuggingFace models
-    { "folke/trouble.nvim",               dependencies = { "nvim-tree/nvim-web-devicons" } }                 -- Pretty Diagnostics
+    },                                                                                                                                              -- Cool Command Line
+    { "David-Kunz/gen.nvim" },                                                                                                                      -- Runs prompts for Ollama models
+    { "vinnymeller/swagger-preview.nvim", build = "npm install -g swagger-ui-watcher" },                                                            -- Preview for Swagger Files
+    { 'echasnovski/mini.nvim',            version = '*' },                                                                                          -- Animations
+    { 'TabbyML/vim-tabby',                config = function() vim.g.tabby_keybinding_accept = '<Tab>' end },                                        -- Local Completion using HuggingFace models
+    { "folke/trouble.nvim",               dependencies = { "nvim-tree/nvim-web-devicons" } },                                                       -- Pretty Diagnostics
+    { "toppair/peek.nvim",                build = "deno task --quiet build:fast",                         event = { "VeryLazy" } },                 -- Markdown Preview
 }
