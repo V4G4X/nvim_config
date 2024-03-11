@@ -167,4 +167,4 @@ function InitTS()
     vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T)
 end
 
-if not vim.g.vscode then InitTS() end
+InitTS()
