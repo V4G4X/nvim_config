@@ -17,9 +17,6 @@ function InitNvimTree()
         renderer = {
             group_empty = true,
         },
-        filters = {
-            dotfiles = true,
-        },
     })
 
     local nvimTreeApi = require("nvim-tree.api")
