@@ -3,6 +3,7 @@ return {
     { "nvim-tree/nvim-tree.lua",         dependencies = { "nvim-tree/nvim-web-devicons", },               version = "*",  lazy = true }, -- Tree Explorer
     { "tpope/vim-fugitive" },                                                                                                            -- Git Tools
     { 'shumphrey/fugitive-gitlab.vim' },                                                                                                 -- Gitlab Blame Integration
+    { 'tpope/vim-rhubarb' },
     { "nvim-lua/plenary.nvim" },                                                                                                         -- Library of functions
     { 'nvim-telescope/telescope.nvim',   dependencies = { 'nvim-lua/plenary.nvim' },                      tag = '0.1.2' },               -- File Operations
     { "nvim-treesitter/nvim-treesitter", dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" } },                             -- Parsers
