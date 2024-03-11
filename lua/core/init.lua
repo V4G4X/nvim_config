@@ -23,3 +23,6 @@ require("core.plugin_configs.undotree")
 
 -- Nvim Settings
 require("core.settings")
+
+-- Gitlab Configuration
+require("core.gitlab")

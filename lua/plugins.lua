@@ -1,17 +1,12 @@
 return {
-    { "catppuccin/nvim",                 name = "catppuccin",                                             priority = 1000 }, -- Theme
-    {
-        "nvim-tree/nvim-tree.lua",                                                                                           -- Tree Explorer
-        version = "*",
-        lazy = false,
-        dependencies = { "nvim-tree/nvim-web-devicons", },
-        config = function() require("nvim-tree").setup {} end,
-    },
-    { "tpope/vim-fugitive" },                                                                                              -- Git Tools
-    { "nvim-lua/plenary.nvim" },                                                                                           -- Library of functions
-    { 'nvim-telescope/telescope.nvim',   dependencies = { 'nvim-lua/plenary.nvim' },                      tag = '0.1.2' }, -- File Operations
-    { "nvim-treesitter/nvim-treesitter", dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" } },               -- Parsers
-    { "sanfusu/neovim-undotree" },                                                                                         -- UndoTree
+    { "catppuccin/nvim",                 name = "catppuccin",                                             priority = 1000 },             -- Theme
+    { "nvim-tree/nvim-tree.lua",         dependencies = { "nvim-tree/nvim-web-devicons", },               version = "*",  lazy = true }, -- Tree Explorer
+    { "tpope/vim-fugitive" },                                                                                                            -- Git Tools
+    { 'shumphrey/fugitive-gitlab.vim' },                                                                                                 -- Gitlab Blame Integration
+    { "nvim-lua/plenary.nvim" },                                                                                                         -- Library of functions
+    { 'nvim-telescope/telescope.nvim',   dependencies = { 'nvim-lua/plenary.nvim' },                      tag = '0.1.2' },               -- File Operations
+    { "nvim-treesitter/nvim-treesitter", dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" } },                             -- Parsers
+    { "sanfusu/neovim-undotree" },                                                                                                       -- UndoTree
     {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
