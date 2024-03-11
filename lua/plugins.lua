@@ -69,4 +69,5 @@ return {
     { "folke/trouble.nvim",               dependencies = { "nvim-tree/nvim-web-devicons" } },                                       -- Pretty Diagnostics
     { "toppair/peek.nvim",                build = "deno task --quiet build:fast",                         event = { "VeryLazy" } }, -- Markdown Preview
     { 'ldelossa/litee-calltree.nvim',     dependencies = { 'ldelossa/litee.nvim' } },                                               -- View Incoming/Outgoing Call Tree
+    { "chrisgrieser/nvim-spider",         lazy = true },                                                                            -- Motion Traversal over SubWords
 }
