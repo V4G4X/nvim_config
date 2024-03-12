@@ -21,6 +21,7 @@ require("core.plugin_configs.telescope")
 require("core.plugin_configs.toggleterm")
 require("core.plugin_configs.treesitter")
 require("core.plugin_configs.undotree")
+require("core.plugin_configs.venn")
 
 -- Nvim Settings
 require("core.settings")
