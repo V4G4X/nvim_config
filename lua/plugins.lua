@@ -57,15 +57,15 @@ return {
         config = function()
             vim.api.nvim_set_keymap('n', '<leader>c', '<cmd>FineCmdline<CR>', { noremap = true, desc = "Command Line" })
         end
-    },                                                                                                                              -- Cool Command Line
-    { "David-Kunz/gen.nvim" },                                                                                                      -- Runs prompts for Ollama models
-    { "vinnymeller/swagger-preview.nvim", build = "npm install -g swagger-ui-watcher" },                                            -- Preview for Swagger Files
-    { 'echasnovski/mini.nvim',            version = '*' },                                                                          -- Animations
-    { 'TabbyML/vim-tabby',                config = function() vim.g.tabby_keybinding_accept = '<Tab>' end },                        -- Local Completion using HuggingFace models
-    { "folke/trouble.nvim",               dependencies = { "nvim-tree/nvim-web-devicons" } },                                       -- Pretty Diagnostics
-    { "toppair/peek.nvim",                build = "deno task --quiet build:fast",                         event = { "VeryLazy" } }, -- Markdown Preview
-    { 'ldelossa/litee-calltree.nvim',     dependencies = { 'ldelossa/litee.nvim' } },                                               -- View Incoming/Outgoing Call Tree
-    { "chrisgrieser/nvim-spider",         lazy = true },                                                                            -- Motion Traversal over SubWords
-    { "sindrets/diffview.nvim" },                                                                                                   -- Diff View for Git Revisions
-    { "jbyuki/venn.nvim" },                                                                                                         -- ASCII Diagrams
+    },                                                                                                               -- Cool Command Line
+    { "David-Kunz/gen.nvim" },                                                                                       -- Runs prompts for Ollama models
+    { "vinnymeller/swagger-preview.nvim", build = "npm install -g swagger-ui-watcher" },                             -- Preview for Swagger Files
+    { 'echasnovski/mini.nvim',            version = '*' },                                                           -- Animations
+    { "folke/trouble.nvim",               dependencies = { "nvim-tree/nvim-web-devicons" } },                        -- Pretty Diagnostics
+    { "toppair/peek.nvim",                build = "deno task --quiet build:fast",          event = { "VeryLazy" } }, -- Markdown Preview
+    { 'ldelossa/litee-calltree.nvim',     dependencies = { 'ldelossa/litee.nvim' } },                                -- View Incoming/Outgoing Call Tree
+    { "chrisgrieser/nvim-spider",         lazy = true },                                                             -- Motion Traversal over SubWords
+    { "sindrets/diffview.nvim" },                                                                                    -- Diff View for Git Revisions
+    { "jbyuki/venn.nvim" },                                                                                          -- ASCII Diagrams
+    { "Exafunction/codeium.vim" },                                                                                   -- Codeium Code Autocompletion
 }

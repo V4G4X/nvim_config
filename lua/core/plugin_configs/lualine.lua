@@ -34,6 +34,11 @@ function InitLuaLine()
         --return string.format("*%d +%d -%d ?%d", added, modified, deleted, untracked)
     end
 
+    -- Function that returns current Codeium status
+    local function get_codeium()
+        return "{...}:" .. vim.api.nvim_call_function("codeium#GetStatusString", {})
+    end
+
     require('lualine').setup {
         options = {
             icons_enabled = true,
@@ -58,7 +63,7 @@ function InitLuaLine()
             lualine_b = { 'branch', 'diff', 'diagnostics', get_git_status },
             lualine_c = { 'filename' },
             lualine_x = { 'encoding', 'fileformat', 'filetype' },
-            lualine_y = { 'progress' },
+            lualine_y = { get_codeium, 'progress' },
             lualine_z = { 'location' }
         },
         inactive_sections = {
