@@ -23,7 +23,7 @@ function InitLspPlugin()
                     d = { telescopeBuiltin.lsp_document_symbols, "Document" },
                 },
                 e = { telescopeBuiltin.diagnostics, "Diagnostics" },
-                f = { vim.lsp.buf.format, "Format" },
+                f = { function() vim.lsp.buf.format({ async = true }) end, "Format" },
                 r = { vim.lsp.buf.references, "References" },
                 R = { vim.lsp.buf.rename, "Rename" },
                 i = { telescopeBuiltin.lsp_implementations, "Implementations" },
