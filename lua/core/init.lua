@@ -23,6 +23,7 @@ require("core.plugin_configs.toggleterm")
 require("core.plugin_configs.treesitter")
 require("core.plugin_configs.undotree")
 require("core.plugin_configs.venn")
+require("core.plugin_configs.which-key")
 
 -- Nvim Settings
 require("core.settings")
