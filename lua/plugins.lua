@@ -58,7 +58,6 @@ return {
             vim.api.nvim_set_keymap('n', '<leader>c', '<cmd>FineCmdline<CR>', { noremap = true, desc = "Command Line" })
         end
     },                                                                                                               -- Cool Command Line
-    { "David-Kunz/gen.nvim" },                                                                                       -- Runs prompts for Ollama models
     { "vinnymeller/swagger-preview.nvim", build = "npm install -g swagger-ui-watcher" },                             -- Preview for Swagger Files
     { 'echasnovski/mini.nvim',            version = '*' },                                                           -- Animations
     { "folke/trouble.nvim",               dependencies = { "nvim-tree/nvim-web-devicons" } },                        -- Pretty Diagnostics

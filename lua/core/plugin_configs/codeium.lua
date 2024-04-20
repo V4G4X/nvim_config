@@ -7,6 +7,11 @@ function ConfigureCodeium()
         { expr = true, silent = true, desc = "Trigger Suggestion" })
     vim.keymap.set('i', '<C-]>', function() return vim.fn['codeium#Clear']() end,
         { expr = true, silent = true, desc = "Clear Suggestion" })
+
+    -- Codeium Chat
+    require("which-key").register({
+        C = { function() return vim.fn['codeium#Chat']() end, "Chat" }
+    }, { prefix = "<leader>" })
 end
 
 if not vim.g.vscode then ConfigureCodeium() end
