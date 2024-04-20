@@ -1,6 +1,21 @@
 -- Initialise LSP plugin
 
 function InitLspPlugin()
+    -- Enable inlay hints
+    vim.api.nvim_create_autocmd("LspAttach", {
+        group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+        callback = function(args)
+            local client = vim.lsp.get_client_by_id(args.data.client_id)
+            if client ~= nil and client.server_capabilities.codeLensProvider then
+                vim.lsp.codelens.refresh()
+            end
+            if client ~= nil and client.server_capabilities.inlayHintProvider then
+                vim.lsp.inlay_hint.enable(true)
+            end
+            -- whatever other lsp config you want
+        end
+    })
+
     local lspZero = require('lsp-zero').preset({})
 
     lspZero.on_attach(function(client, bufnr)
@@ -14,6 +29,7 @@ function InitLspPlugin()
             l = {
                 name = "LSP", -- optional group name
                 a = { vim.lsp.buf.code_action, "Code Actions" },
+                A = { vim.lsp.codelens.run, "CodeLens Action" },
                 d = { vim.lsp.buf.definition, "Definition" },
                 t = { vim.lsp.buf.type_definition, "Type Definition" },
                 h = { vim.lsp.buf.hover, "Hover" },
