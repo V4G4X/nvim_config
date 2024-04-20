@@ -67,4 +67,14 @@ return {
     { "sindrets/diffview.nvim" },                                                                                    -- Diff View for Git Revisions
     { "jbyuki/venn.nvim" },                                                                                          -- ASCII Diagrams
     { "Exafunction/codeium.vim" },                                                                                   -- Codeium Code Autocompletion
+    {
+        "utilyre/barbecue.nvim",                                                                                     -- LSP Aware Win-Bar
+        name = "barbecue",
+        version = "*",
+        dependencies = {
+            "SmiteshP/nvim-navic",
+            "nvim-tree/nvim-web-devicons", -- optional dependency
+        },
+        config = function() require("barbecue").setup() end,
+    },
 }
