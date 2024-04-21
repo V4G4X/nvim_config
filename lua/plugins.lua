@@ -1,13 +1,13 @@
 return {
-    { "catppuccin/nvim",                 name = "catppuccin",                                             priority = 1000 },             -- Theme
+    { "catppuccin/nvim",                 name = "catppuccin",                                             priority = 1000 },               -- Theme
     { "nvim-tree/nvim-tree.lua",         dependencies = { "nvim-tree/nvim-web-devicons", },               version = "*",    lazy = true }, -- Tree Explorer
-    { "tpope/vim-fugitive" },                                                                                                            -- Git Tools
-    { 'shumphrey/fugitive-gitlab.vim' },                                                                                                 -- Gitlab Blame Integration
+    { "tpope/vim-fugitive" },                                                                                                              -- Git Tools
+    { 'shumphrey/fugitive-gitlab.vim' },                                                                                                   -- Gitlab Blame Integration
     { 'tpope/vim-rhubarb' },
-    { "nvim-lua/plenary.nvim" },                                                                                                         -- Library of functions
-    { 'nvim-telescope/telescope.nvim',   dependencies = { 'nvim-lua/plenary.nvim' },                      branch = '0.1.x', },           -- File Operations
-    { "nvim-treesitter/nvim-treesitter", dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" } },                             -- Parsers
-    { "sanfusu/neovim-undotree" },                                                                                                       -- UndoTree
+    { "nvim-lua/plenary.nvim" },                                                                                                           -- Library of functions
+    { 'nvim-telescope/telescope.nvim',   dependencies = { 'nvim-lua/plenary.nvim' },                      branch = '0.1.x', },             -- File Operations
+    { "nvim-treesitter/nvim-treesitter", dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" } },                               -- Parsers
+    { "sanfusu/neovim-undotree" },                                                                                                         -- UndoTree
     {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
@@ -76,5 +76,12 @@ return {
             "nvim-tree/nvim-web-devicons", -- optional dependency
         },
         config = function() require("barbecue").setup() end,
+    },
+    {
+        "hedyhli/outline.nvim", -- LSP Outline for Document
+        lazy = true,
+        cmd = { "Outline", "OutlineOpen" },
+        keys = { { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" }, },
+        config = function() require("outline").setup() end,
     },
 }
