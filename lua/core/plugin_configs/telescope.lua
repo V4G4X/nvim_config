@@ -1,4 +1,10 @@
 if not vim.g.vscode then
+
+    require('telescope').setup({
+        defaults = {
+            layout_strategy = 'vertical',
+        },
+    })
     local builtin = require('telescope.builtin')
 
     -- Key maps
