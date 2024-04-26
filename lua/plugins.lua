@@ -86,4 +86,5 @@ return {
         config = function() require("outline").setup() end,
     },
     { 'echasnovski/mini.statusline', version = '*' },
+    { "sontungexpt/sttusline",               branch = "table_version", event = { "BufEnter" }, dependencies = { "nvim-tree/nvim-web-devicons" } }, -- Light Lazyloading StatusLine
 }

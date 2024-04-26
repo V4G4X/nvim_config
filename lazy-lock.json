@@ -45,6 +45,7 @@
   "peek.nvim": { "branch": "master", "commit": "5820d937d5414baea5f586dc2a3d912a74636e5b" },
   "plenary.nvim": { "branch": "master", "commit": "8aad4396840be7fc42896e3011751b7609ca4119" },
   "startup.nvim": { "branch": "master", "commit": "c6ba324f9eba0c23b675b53af431346aab893268" },
+  "sttusline": { "branch": "table_version", "commit": "bab436f00e4b0a9b78cd86ae4c7fac4591e48d2c" },
   "swagger-preview.nvim": { "branch": "master", "commit": "4e1db32e7934c57d653846d5d297f7ea9ddb6ee8" },
   "telescope.nvim": { "branch": "0.1.x", "commit": "6312868392331c9c0f22725041f1ec2bef57c751" },
   "toggleterm.nvim": { "branch": "main", "commit": "193786e0371e3286d3bc9aa0079da1cd41beaa62" },
