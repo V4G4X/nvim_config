@@ -3,7 +3,7 @@
 local function InitSpider()
     -- default values
     require("spider").setup {
-        skipInsignificantPunctuation = true,
+        skipInsignificantPunctuation = false,
         subwordMovement = true,
         customPatterns = {}, -- check "Custom Movement Patterns" in the README for details
     }
