@@ -85,4 +85,5 @@ return {
         keys = { { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" }, },
         config = function() require("outline").setup() end,
     },
+    { 'echasnovski/mini.statusline', version = '*' },
 }
