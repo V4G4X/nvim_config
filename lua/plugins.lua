@@ -1,4 +1,5 @@
 return {
+    { "rebelot/kanagawa.nvim" },
     { "catppuccin/nvim",                 name = "catppuccin",                                             priority = 1000 },               -- Theme
     { "nvim-tree/nvim-tree.lua",         dependencies = { "nvim-tree/nvim-web-devicons", },               version = "*",    lazy = true }, -- Tree Explorer
     { "tpope/vim-fugitive" },                                                                                                              -- Git Tools
