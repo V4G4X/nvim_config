@@ -87,4 +87,5 @@ return {
     },
     { 'echasnovski/mini.statusline', version = '*' },
     { "sontungexpt/sttusline",               branch = "table_version", event = { "BufEnter" }, dependencies = { "nvim-tree/nvim-web-devicons" } }, -- Light Lazyloading StatusLine
+    { "lukas-reineke/indent-blankline.nvim", main = "ibl" }                                                                                        -- Indentation Virtual Guides
 }
