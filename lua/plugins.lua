@@ -85,7 +85,8 @@ return {
         keys = { { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" }, },
         config = function() require("outline").setup() end,
     },
-    { 'echasnovski/mini.statusline', version = '*' },
+    { 'echasnovski/mini.statusline',         version = '*' },
     { "sontungexpt/sttusline",               branch = "table_version", event = { "BufEnter" }, dependencies = { "nvim-tree/nvim-web-devicons" } }, -- Light Lazyloading StatusLine
-    { "lukas-reineke/indent-blankline.nvim", main = "ibl" }                                                                                        -- Indentation Virtual Guides
+    { "lukas-reineke/indent-blankline.nvim", main = "ibl" },                                                                                       -- Indentation Virtual Guides
+    { 'rmagatti/auto-session' },                                                                                                                   -- Auto Session Management
 }
