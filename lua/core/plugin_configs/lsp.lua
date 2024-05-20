@@ -41,7 +41,7 @@ function InitLspPlugin()
                 name = "LSP", -- optional group name
                 a = { vim.lsp.buf.code_action, "Code Actions" },
                 A = { vim.lsp.codelens.run, "CodeLens Action" },
-                d = { vim.lsp.buf.definition, "Definition" },
+                d = { vim.diagnostic.open_float, "Line Diagnostic" },
                 t = { vim.lsp.buf.type_definition, "Type Definition" },
                 T = {
                     name = "Toggle",
@@ -111,6 +111,3 @@ function InitLspPlugin()
 end
 
 if not vim.g.vscode then InitLspPlugin() end
-
-vim.keymap.set("n", "]g", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
-vim.keymap.set("n", "[g", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
