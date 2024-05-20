@@ -1,5 +1,16 @@
--- Initialise LSP plugin
+-- Util functions
+local function toggleInlayHints()
+    if vim.fn.has "nvim-0.10" == 1 then
+        local ok = pcall(vim.lsp.inlay_hint.enable, vim.lsp.inlay_hint.is_enabled())
+        if ok then
+            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+        else
+            vim.lsp.inlay_hint.enable(0, not vim.lsp.inlay_hint.is_enabled())
+        end
+    end
+end
 
+-- Initialise LSP plugin
 function InitLspPlugin()
     -- Enable inlay hints
     vim.api.nvim_create_autocmd("LspAttach", {
@@ -32,7 +43,10 @@ function InitLspPlugin()
                 A = { vim.lsp.codelens.run, "CodeLens Action" },
                 d = { vim.lsp.buf.definition, "Definition" },
                 t = { vim.lsp.buf.type_definition, "Type Definition" },
-                h = { vim.lsp.buf.hover, "Hover" },
+                T = {
+                    name = "Toggle",
+                    h = { toggleInlayHints, "Toggle Inlay Hints" },
+                },
                 s = {
                     name = "Symbols",
                     w = { telescopeBuiltin.lsp_dynamic_workspace_symbols, "Workspace" },
