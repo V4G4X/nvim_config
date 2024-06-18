@@ -15,4 +15,9 @@ function InitMiniAnimate()
     })
 end
 
+function ToggleScrollAnimation()
+    local animate = require('mini.animate')
+    animate.config.scroll.enable = not animate.config.scroll.enable
+end
+
 if not vim.g.vscode then InitMiniAnimate() end
