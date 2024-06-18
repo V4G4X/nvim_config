@@ -29,11 +29,11 @@ return {
             { 'L3MON4D3/LuaSnip' },                  -- Required
         }
     },
-    { "scalameta/nvim-metals",   dependencies = { "mfussenegger/nvim-dap" } },                       -- Scala LSP
-    { 'akinsho/toggleterm.nvim', config = true,                             version = "*" },         -- Toggelable terminal
-    { "lewis6991/gitsigns.nvim" },                                                                   -- Git Signs (Gutter Indicators)
-    { 'kevinhwang91/nvim-bqf' },                                                                     -- QuickFix window alternative
-    { "kdheepak/lazygit.nvim",   dependencies = { "nvim-lua/plenary.nvim" } },                       -- LazyGit floating window
+    { "scalameta/nvim-metals",   dependencies = { "mfussenegger/nvim-dap" } },               -- Scala LSP
+    { 'akinsho/toggleterm.nvim', config = true,                             version = "*" }, -- Toggelable terminal
+    { "lewis6991/gitsigns.nvim" },                                                           -- Git Signs (Gutter Indicators)
+    { 'kevinhwang91/nvim-bqf' },                                                             -- QuickFix window alternative
+    { "kdheepak/lazygit.nvim",   dependencies = { "nvim-lua/plenary.nvim" } },               -- LazyGit floating window
     {
         "folke/which-key.nvim",
         event = "VeryLazy",
@@ -54,9 +54,6 @@ return {
     {
         'VonHeikemen/fine-cmdline.nvim',
         dependencies = { 'MunifTanjim/nui.nvim' },
-        config = function()
-            vim.api.nvim_set_keymap('n', '<leader>c', '<cmd>FineCmdline<CR>', { noremap = true, desc = "Command Line" })
-        end
     },                                                                                                               -- Cool Command Line
     { "vinnymeller/swagger-preview.nvim", build = "npm install -g swagger-ui-watcher" },                             -- Preview for Swagger Files
     { 'echasnovski/mini.nvim',            version = '*' },                                                           -- Animations
@@ -88,9 +85,10 @@ return {
     { "lukas-reineke/indent-blankline.nvim", main = "ibl" },                                                                                       -- Indentation Virtual Guides
     { 'rmagatti/auto-session' },                                                                                                                   -- Auto Session Management
     {
-        "ray-x/lsp_signature.nvim", -- Provides function signature while typing
+        "ray-x/lsp_signature.nvim",                                                                                                                -- Provides function signature while typing
         event = "VeryLazy",
         opts = {},
         config = function(_, opts) require 'lsp_signature'.setup(opts) end
     },
+    { 'axkirillov/hbac.nvim', config = true }, -- Heuristic buffer auto-close
 }
