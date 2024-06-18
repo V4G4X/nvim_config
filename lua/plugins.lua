@@ -32,7 +32,6 @@ return {
     { "scalameta/nvim-metals",     dependencies = { "mfussenegger/nvim-dap" } },                     -- Scala LSP
     { 'akinsho/toggleterm.nvim',   config = true,                                   version = "*" }, -- Toggelable terminal
     { "lewis6991/gitsigns.nvim" },                                                                   -- Git Signs (Gutter Indicators)
-    { 'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } },               -- Status Line
     { 'kevinhwang91/nvim-bqf' },                                                                     -- QuickFix window alternative
     { "kdheepak/lazygit.nvim",     dependencies = { "nvim-lua/plenary.nvim" } },                     -- LazyGit floating window
     {
@@ -85,7 +84,6 @@ return {
         keys = { { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" }, },
         config = function() require("outline").setup() end,
     },
-    { 'echasnovski/mini.statusline',         version = '*' },
     { "sontungexpt/sttusline",               branch = "table_version", event = { "BufEnter" }, dependencies = { "nvim-tree/nvim-web-devicons" } }, -- Light Lazyloading StatusLine
     { "lukas-reineke/indent-blankline.nvim", main = "ibl" },                                                                                       -- Indentation Virtual Guides
     { 'rmagatti/auto-session' },                                                                                                                   -- Auto Session Management
