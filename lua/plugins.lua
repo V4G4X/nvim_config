@@ -90,6 +90,7 @@ return {
         opts = {},
         config = function(_, opts) require 'lsp_signature'.setup(opts) end
     },
-    { 'axkirillov/hbac.nvim',                   config = true },      -- Heuristic buffer auto-close
-    { "rachartier/tiny-inline-diagnostic.nvim", event = "VeryLazy" }, -- Pretty Diagnostics
+    { 'axkirillov/hbac.nvim',                   config = true },                                                                 -- Heuristic buffer auto-close
+    { "rachartier/tiny-inline-diagnostic.nvim", event = "VeryLazy" },                                                            -- Pretty Diagnostics
+    { 'MeanderingProgrammer/markdown.nvim',     dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' } }, -- In-Buffer Markdown render
 }
