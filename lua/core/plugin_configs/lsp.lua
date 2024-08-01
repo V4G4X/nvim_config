@@ -41,7 +41,6 @@ function InitLspPlugin()
                 name = "LSP", -- optional group name
                 a = { vim.lsp.buf.code_action, "Code Actions" },
                 A = { vim.lsp.codelens.run, "CodeLens Action" },
-                d = { vim.diagnostic.open_float, "Line Diagnostic" },
                 t = { vim.lsp.buf.type_definition, "Type Definition" },
                 T = {
                     name = "Toggle",
@@ -64,12 +63,16 @@ function InitLspPlugin()
                 }
             },
         }, { prefix = "<leader>" })
+
+        vim.diagnostic.config({ virtual_text = false }) -- Don't display all diagnostics in the buffer
     end)
 
 
     -- (Optional) Configure lua language servers for neovim
     local lspconfig = require('lspconfig')
+
     lspconfig.lua_ls.setup(lspZero.nvim_lua_ls())
+
     lspconfig.gopls.setup({
         cmd = { "gopls" },
         filetypes = { "go", "gomod", "gowork", "gotmpl" },

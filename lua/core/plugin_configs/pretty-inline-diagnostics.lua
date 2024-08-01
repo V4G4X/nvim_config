@@ -38,8 +38,6 @@ function InitInlineDiagnostics()
             }
         }
     })
-
-    vim.diagnostic.config({ virtual_text = false }) -- Don't display all diagnostics in the buffer
 end
 
 if not vim.g.vscode then InitInlineDiagnostics() end

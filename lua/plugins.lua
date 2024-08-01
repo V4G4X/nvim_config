@@ -42,30 +42,23 @@ return {
             vim.o.timeoutlen = 300
         end,
     },
-    { 'numToStr/Comment.nvim',          config = function() require "Comment".setup() end,                      lazy = false },  -- Adding Language aware Commenenting
-    { 'akinsho/bufferline.nvim',        dependencies = 'nvim-tree/nvim-web-devicons',                           version = "*" }, -- bufferline adds Tabs to Buffers
-    { "startup-nvim/startup.nvim",      config = function() require "startup".setup({ theme = "startify" }) end },               -- Startup Page
-    { 'stevearc/oil.nvim',              dependencies = { "nvim-tree/nvim-web-devicons" },                       opts = {}, },    -- Manage Files in a Buffer-like editor
-    { 'yorickpeterse/nvim-pqf',         config = function() require('pqf').setup() end, },                                       -- Formats the QuickFix window a little better
-    { 'nvim-focus/focus.nvim',          config = function() require('focus').setup() end,                       version = '*' }, -- Window Resizer
-    { 'stevearc/dressing.nvim',         opts = {} },                                                                             -- Improves the default Vim interfaces
-    { 'rcarriga/nvim-notify' },                                                                                                  -- A better looking notification system
-    { "LintaoAmons/easy-commands.nvim", event = "VeryLazy" },                                                                    -- A central interface to look up commands across plugins
+    { 'akinsho/bufferline.nvim',          dependencies = 'nvim-tree/nvim-web-devicons',                           version = "*" },          -- bufferline adds Tabs to Buffers
+    { "startup-nvim/startup.nvim",        config = function() require "startup".setup({ theme = "startify" }) end },                        -- Startup Page
+    { 'stevearc/oil.nvim',                dependencies = { "nvim-tree/nvim-web-devicons" },                       opts = {}, },             -- Manage Files in a Buffer-like editor
+    { 'nvim-focus/focus.nvim',            config = function() require('focus').setup() end,                       version = '*' },          -- Window Resizer
+    { 'stevearc/dressing.nvim',           opts = {} },                                                                                      -- Improves the default Vim interfaces
+    { 'rcarriga/nvim-notify' },                                                                                                             -- A better looking notification system
+    { "LintaoAmons/easy-commands.nvim",   event = "VeryLazy" },                                                                             -- A central interface to look up commands across plugins
+    { "vinnymeller/swagger-preview.nvim", build = "npm install -g swagger-ui-watcher" },                                                    -- Preview for Swagger Files
+    { 'echasnovski/mini.nvim',            version = '*' },                                                                                  -- Animations
+    { "toppair/peek.nvim",                build = "deno task --quiet build:fast",                                 event = { "VeryLazy" } }, -- Markdown Preview
+    { 'ldelossa/litee-calltree.nvim',     dependencies = { 'ldelossa/litee.nvim' } },                                                       -- View Incoming/Outgoing Call Tree
+    { "chrisgrieser/nvim-spider",         lazy = true },                                                                                    -- Motion Traversal over SubWords
+    { "sindrets/diffview.nvim" },                                                                                                           -- Diff View for Git Revisions
+    { "jbyuki/venn.nvim" },                                                                                                                 -- ASCII Diagrams
+    { "Exafunction/codeium.vim" },                                                                                                          -- Codeium Code Autocompletion
     {
-        'VonHeikemen/fine-cmdline.nvim',
-        dependencies = { 'MunifTanjim/nui.nvim' },
-    },                                                                                                               -- Cool Command Line
-    { "vinnymeller/swagger-preview.nvim", build = "npm install -g swagger-ui-watcher" },                             -- Preview for Swagger Files
-    { 'echasnovski/mini.nvim',            version = '*' },                                                           -- Animations
-    { "folke/trouble.nvim",               dependencies = { "nvim-tree/nvim-web-devicons" } },                        -- Pretty Diagnostics
-    { "toppair/peek.nvim",                build = "deno task --quiet build:fast",          event = { "VeryLazy" } }, -- Markdown Preview
-    { 'ldelossa/litee-calltree.nvim',     dependencies = { 'ldelossa/litee.nvim' } },                                -- View Incoming/Outgoing Call Tree
-    { "chrisgrieser/nvim-spider",         lazy = true },                                                             -- Motion Traversal over SubWords
-    { "sindrets/diffview.nvim" },                                                                                    -- Diff View for Git Revisions
-    { "jbyuki/venn.nvim" },                                                                                          -- ASCII Diagrams
-    { "Exafunction/codeium.vim" },                                                                                   -- Codeium Code Autocompletion
-    {
-        "utilyre/barbecue.nvim",                                                                                     -- LSP Aware Win-Bar
+        "utilyre/barbecue.nvim",                                                                                                            -- LSP Aware Win-Bar
         name = "barbecue",
         version = "*",
         dependencies = {
@@ -90,6 +83,5 @@ return {
         opts = {},
         config = function(_, opts) require 'lsp_signature'.setup(opts) end
     },
-    { 'axkirillov/hbac.nvim',                   config = true },      -- Heuristic buffer auto-close
-    { "rachartier/tiny-inline-diagnostic.nvim", event = "VeryLazy" }, -- Pretty Diagnostics
+    { 'axkirillov/hbac.nvim', config = true },                                -- Heuristic buffer auto-close
 }
