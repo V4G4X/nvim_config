@@ -83,5 +83,6 @@ return {
         opts = {},
         config = function(_, opts) require 'lsp_signature'.setup(opts) end
     },
-    { 'axkirillov/hbac.nvim', config = true },                                -- Heuristic buffer auto-close
+    { 'axkirillov/hbac.nvim', config = true },                                  -- Heuristic buffer auto-close
+    { "luukvbaal/nnn.nvim",   config = function() require("nnn").setup() end }, -- Provides nnn file explorer
 }
