@@ -2,12 +2,10 @@
 
 function InitNotify()
     -- Key maps
-    require("which-key").register({
-        f = {
-            name = "Telescope", -- optional group name
-            n = { require('telescope').extensions.notify.notify, "Notifications" },
-        },
-    }, { prefix = "<leader>" })
+    require("which-key").add({
+        { "<leader>f",  group = "Telescope" },
+        { "<leader>fn", require('telescope').extensions.notify.notify, desc = "Notifications" },
+    })
 
     local notify = require('notify')
     notify.setup({

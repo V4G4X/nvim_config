@@ -11,15 +11,11 @@ function Calltree()
     })
 
     -- Key maps
-    require("which-key").register({
-        l = {
-            c = {
-                I = { vim.lsp.buf.incoming_calls, "Incoming Tree" },
-                O = { vim.lsp.buf.outgoing_calls, "Outgoing Tree" },
-                P = { require('litee.calltree').popout_to, "Popout Call Tree" },
-            }
-        },
-    }, { prefix = "<leader>" })
+    require("which-key").add({
+        { "<leader>lcI", vim.lsp.buf.incoming_calls,          desc = "Incoming Tree" },
+        { "<leader>lcO", vim.lsp.buf.outgoing_calls,          desc = "Outgoing Tree" },
+        { "<leader>lcP", require('litee.calltree').popout_to, desc = "Popout Call Tree" },
+    })
 end
 
 if not vim.g.vscode then Calltree() end

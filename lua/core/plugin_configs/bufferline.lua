@@ -16,21 +16,17 @@ function InitBufferLine()
         },
     }
 
-    require("which-key").register({
-        b = {
-            name = "Buffers",
-            b = { "<cmd>BufferLinePick<cr>", "Pick Buffer" },
-            c = { "<cmd>BufferLineCloseOthers<cr>", "Close other Buffers" },
-            d = { "<cmd>bdelete<cr>", "Delete current buffer" },
-            n = { "<cmd>BufferLineCycleNext<cr>", "Cycle Next" },
-            N = { "<cmd>BufferLineCyclePrev<cr>", "Cycle Prev" },
-            p = { "<cmd>BufferLineTogglePin<cr>", "Toggle Pin" },
-            s = {
-                name = "Sort Buffers",
-                d = { "<cmd>BufferLineSortByDirectory<cr>", "By Directory" },
-            }
-        },
-    }, { prefix = "<leader>" })
+    require("which-key").add({
+        { "<leader>b",   group = "Buffers" },
+        { "<leader>bN",  "<cmd>BufferLineCyclePrev<cr>",       desc = "Cycle Prev" },
+        { "<leader>bb",  "<cmd>BufferLinePick<cr>",            desc = "Pick Buffer" },
+        { "<leader>bc",  "<cmd>BufferLineCloseOthers<cr>",     desc = "Close other Buffers" },
+        { "<leader>bd",  "<cmd>bdelete<cr>",                   desc = "Delete current buffer" },
+        { "<leader>bn",  "<cmd>BufferLineCycleNext<cr>",       desc = "Cycle Next" },
+        { "<leader>bp",  "<cmd>BufferLineTogglePin<cr>",       desc = "Toggle Pin" },
+        { "<leader>bs",  group = "Sort Buffers" },
+        { "<leader>bsd", "<cmd>BufferLineSortByDirectory<cr>", desc = "By Directory" },
+    })
 end
 
 if not vim.g.vscode then InitBufferLine() end

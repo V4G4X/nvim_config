@@ -2,12 +2,10 @@
 
 function InitLazyGit()
     -- Key maps
-    require("which-key").register({
-        g = {
-            name = "Git", -- optional group name
-            g = { "<cmd>LazyGit<cr>", "LazyGit", silent = true },
-        },
-    }, { prefix = "<leader>" })
+    require("which-key").add({
+        { "<leader>g",  group = "Git" },
+        { "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+    })
 end
 
 if not vim.g.vscode then InitLazyGit() end

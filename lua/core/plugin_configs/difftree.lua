@@ -12,13 +12,11 @@ function DiffTree()
     end
 
     -- Key maps
-    require("which-key").register({
-        g = {
-            name = "Git", -- optional group name
-            o = { diffOpenWithInput, "Open DiffView" },
-            f = { diffOpenFileHistory, "Open DiffView on Files" },
-        },
-    }, { prefix = "<leader>" })
+    require("which-key").add({
+        { "<leader>g",  group = "Git" },
+        { "<leader>gf", diffOpenFileHistory, desc = "Open DiffView on Files" },
+        { "<leader>go", diffOpenWithInput,   desc = "Open DiffView" },
+    })
 end
 
 if not vim.g.vscode then DiffTree() end

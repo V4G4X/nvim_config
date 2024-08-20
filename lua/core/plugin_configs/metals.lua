@@ -67,12 +67,10 @@ function InitMetals()
     local telescope = require('telescope')
 
     -- Key maps
-    require("which-key").register({
-        l = {
-            name = "LSP", -- optional group name
-            M = { telescope.extensions.metals.commands, "Metals Commands" },
-        },
-    }, { prefix = "<leader>" })
+    require("which-key").add({
+        { "<leader>l",  group = "LSP" },
+        { "<leader>lM", telescope.extensions.metals.commands, desc = "Metals Commands" },
+    })
 end
 
 if not vim.g.vscode then InitMetals() end

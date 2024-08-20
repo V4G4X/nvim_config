@@ -143,17 +143,12 @@ function InitTS()
     }
 
     local whichKey = require("which-key")
-    whichKey.register({
-        n = { name = "Swap Next", ["1"] = "which_key_ignore" }, -- special label to hide it in the popup
-        p = { name = "Swap Prev", ["1"] = "which_key_ignore" }, -- special label to hide it in the popup
-    }, { prefix = "<leader>" })
-    whichKey.register({
-        l = { name = "Lang Object", ["1"] = "which_key_ignore" }, -- special label to hide it in the popup
-    }, { prefix = "]" })
-    whichKey.register({
-        l = { name = "Lang Object", ["1"] = "which_key_ignore" }, -- special label to hide it in the popup
-    }, { prefix = "[" })
-
+    whichKey.add({
+        { "<leader>n",  group = "Swap Next" },
+        { "<leader>p",  group = "Swap Prev" },
+        { "]l",         group = "Lang Object" },
+        { "[l",         group = "Lang Object" },
+    })
     local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
 
     -- vim way: ; goes to the direction you were moving.

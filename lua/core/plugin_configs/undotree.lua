@@ -2,9 +2,9 @@
 
 function Undotree()
     -- Key maps
-    require("which-key").register({
-        u = { vim.cmd.UndotreeToggle, "Undo Tree" },
-    }, { prefix = "<leader>" })
+    require("which-key").add({
+        { "<leader>u", vim.cmd.UndotreeToggle, desc = "Undo Tree" },
+    })
 end
 
 if not vim.g.vscode then Undotree() end

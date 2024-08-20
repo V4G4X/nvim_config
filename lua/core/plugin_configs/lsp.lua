@@ -36,33 +36,25 @@ function InitLspPlugin()
         local telescopeBuiltin = require("telescope.builtin")
 
         -- Key maps
-        require("which-key").register({
-            l = {
-                name = "LSP", -- optional group name
-                a = { vim.lsp.buf.code_action, "Code Actions" },
-                A = { vim.lsp.codelens.run, "CodeLens Action" },
-                t = { vim.lsp.buf.type_definition, "Type Definition" },
-                T = {
-                    name = "Toggle",
-                    h = { toggleInlayHints, "Toggle Inlay Hints" },
-                },
-                s = {
-                    name = "Symbols",
-                    w = { telescopeBuiltin.lsp_dynamic_workspace_symbols, "Workspace" },
-                    d = { telescopeBuiltin.lsp_document_symbols, "Document" },
-                },
-                e = { telescopeBuiltin.diagnostics, "Diagnostics" },
-                f = { function() vim.lsp.buf.format({ async = true }) end, "Format" },
-                r = { vim.lsp.buf.references, "References" },
-                R = { vim.lsp.buf.rename, "Rename" },
-                i = { telescopeBuiltin.lsp_implementations, "Implementations" },
-                c = {
-                    name = "Calls",
-                    i = { telescopeBuiltin.lsp_incoming_calls, "Incoming" },
-                    o = { telescopeBuiltin.lsp_outgoing_calls, "Outgoing" },
-                }
-            },
-        }, { prefix = "<leader>" })
+        require("which-key").add({
+            { "<leader>l",   group = "LSP" },
+            { "<leader>lA",  vim.lsp.codelens.run,                                desc = "CodeLens Action" },
+            { "<leader>lR",  vim.lsp.buf.rename,                                  desc = "Rename" },
+            { "<leader>lT",  group = "Toggle" },
+            { "<leader>lTh", toggleInlayHints,                                    desc = "Toggle Inlay Hints" },
+            { "<leader>la",  vim.lsp.buf.code_action,                             desc = "Code Actions" },
+            { "<leader>lc",  group = "Calls" },
+            { "<leader>lci", telescopeBuiltin.lsp_incoming_calls,                 desc = "Incoming" },
+            { "<leader>lco", telescopeBuiltin.lsp_outgoing_calls,                 desc = "Outgoing" },
+            { "<leader>le",  telescopeBuiltin.diagnostics,                        desc = "Diagnostics" },
+            { "<leader>lf",  function() vim.lsp.buf.format({ async = true }) end, desc = "Format" },
+            { "<leader>li",  telescopeBuiltin.lsp_implementations,                desc = "Implementations" },
+            { "<leader>lr",  vim.lsp.buf.references,                              desc = "References" },
+            { "<leader>ls",  group = "Symbols" },
+            { "<leader>lsd", telescopeBuiltin.lsp_document_symbols,               desc = "Document" },
+            { "<leader>lsw", telescopeBuiltin.lsp_dynamic_workspace_symbols,      desc = "Workspace" },
+            { "<leader>lt",  vim.lsp.buf.type_definition,                         desc = "Type Definition" },
+        })
 
         vim.diagnostic.config({ virtual_text = false }) -- Don't display all diagnostics in the buffer
     end)

@@ -9,13 +9,11 @@ function Fugitive()
     )
 
     -- Key maps
-    require("which-key").register({
-        g = {
-            name = "Git", -- optional group name
-            s = { vim.cmd.Git, "Fugitive" },
-            b = { '<cmd>GBrowse<CR>', "Open in Browser" },
-        },
-    }, { prefix = "<leader>" })
+    require("which-key").add({
+        { "<leader>g",  group = "Git" },
+        { "<leader>gb", "<cmd>GBrowse<CR>", desc = "Open in Browser" },
+        { "<leader>gs", vim.cmd.Git,        desc = "Fugitive" },
+    })
 end
 
 if not vim.g.vscode then Fugitive() end

@@ -54,9 +54,9 @@ function InitGitSigns()
                 return '<Ignore>'
             end
 
-            require("which-key").register({
-                c = { next_hunk, "Next Hunk", expr = true }
-            }, { prefix = "]" })
+            require("which-key").add({
+                { "]c", next_hunk, desc = "Next Hunk", expr = true, replace_keycodes = false },
+            })
 
             local prev_hunk = function()
                 if vim.wo.diff then return '[c' end
@@ -64,36 +64,32 @@ function InitGitSigns()
                 return '<Ignore>'
             end
 
-            require("which-key").register({
-                c = { prev_hunk, "Previous Hunk", expr = true }
+            require("which-key").add({
+                { "[c", prev_hunk, desc = "Previous Hunk", expr = true, replace_keycodes = false },
             }, { prefix = "[" })
 
             -- Actions
-            require("which-key").register({
-                h = {
-                    name = "Hunk",
-                    v = { gs.select_hunk, "Select Hunk" },
-                    s = { gs.stage_hunk, "Stage Hunk" },
-                    r = { gs.reset_hunk, "Reset Hunk" },
-                    S = { gs.stage_buffer, "Stage Buffer" },
-                    u = { gs.undo_stage_hunk, "Undo stage hunk" },
-                    R = { gs.reset_buffer, "Reset Buffer" },
-                    p = { gs.preview_hunk, "Preview Hunk" },
-                    b = { function() gs.blame_line { full = true } end, "Full Blame" },
-                    d = { gs.diffthis, "Diff Buffer" },
-                    D = { function() gs.diffthis('~') end, "Diff Buffer (HEAD)" },
-                    t = {
-                        name = "Toggle",
-                        b = { gs.toggle_current_line_blame, "Line Blame" },
-                        d = { gs.toggle_deleted, "Deleted" },
-                    },
-                },
-            }, { prefix = "<leader>" })
+            require("which-key").add({
+                { "<leader>h",   group = "Hunk",                               mode = { "n", "v" } },
+                { "<leader>hD",  function() gs.diffthis('~') end,              desc = "Diff Buffer (HEAD)" },
+                { "<leader>hR",  gs.reset_buffer,                              desc = "Reset Buffer" },
+                { "<leader>hS",  gs.stage_buffer,                              desc = "Stage Buffer" },
+                { "<leader>hb",  function() gs.blame_line { full = true } end, desc = "Full Blame" },
+                { "<leader>hd",  gs.diffthis,                                  desc = "Diff Buffer" },
+                { "<leader>hp",  gs.preview_hunk,                              desc = "Preview Hunk" },
+                { "<leader>hr",  gs.reset_hunk,                                desc = "Reset Hunk" },
+                { "<leader>hs",  gs.stage_hunk,                                desc = "Stage Hunk" },
+                { "<leader>ht",  group = "Toggle" },
+                { "<leader>htb", gs.toggle_current_line_blame,                 desc = "Line Blame" },
+                { "<leader>htd", gs.toggle_deleted,                            desc = "Deleted" },
+                { "<leader>hu",  gs.undo_stage_hunk,                           desc = "Undo stage hunk" },
+                { "<leader>hv",  gs.select_hunk,                               desc = "Select Hunk" },
+            })
 
-            require("which-key").register({
-                hs = { function() gs.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end, "Stage Hunk" },
-                hr = { function() gs.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end, "Reset Hunk" },
-            }, { prefix = "<leader>", mode = "v" })
+            require("which-key").add({
+                { "<leader>hs", function() gs.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end, desc = "Stage Hunk", mode = "v" },
+                { "<leader>hr", function() gs.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end, desc = "Reset Hunk", mode = "v" },
+            })
         end
     }
 end

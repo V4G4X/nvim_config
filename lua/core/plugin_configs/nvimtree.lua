@@ -21,9 +21,9 @@ function InitNvimTree()
 
     local nvimTreeApi = require("nvim-tree.api")
     -- Key maps
-    require("which-key").register({
-        e = { nvimTreeApi.tree.toggle, "Explorer" },
-    }, { prefix = "<leader>" })
+    require("which-key").add({
+        { "<leader>e", nvimTreeApi.tree.toggle, desc = "Explorer" },
+    })
 end
 
 if not vim.g.vscode then InitNvimTree() end

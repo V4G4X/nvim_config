@@ -9,9 +9,9 @@ function ConfigureCodeium()
         { expr = true, silent = true, desc = "Clear Suggestion" })
 
     -- Codeium Chat
-    require("which-key").register({
-        C = { function() return vim.fn['codeium#Chat']() end, "Chat" }
-    }, { prefix = "<leader>" })
+    require("which-key").add({
+        { "<leader>C", function() return vim.fn['codeium#Chat']() end, desc = "Chat" }
+    })
 end
 
 if not vim.g.vscode then ConfigureCodeium() end

@@ -7,12 +7,10 @@ function SetGeneralWhichKeyMappings()
     end
 
     -- Key maps
-    require("which-key").register({
-        r = {
-            name = "Registers", -- optional group name
-            y = { copyRegisterToClipboard, "Yank register to clipboard" },
-        },
-    }, { prefix = "<leader>" })
+    require("which-key").add({
+        { "<leader>r",  group = "Registers" },
+        { "<leader>ry", copyRegisterToClipboard, desc = "Yank register to clipboard" },
+    })
 end
 
 if not vim.g.vscode then SetGeneralWhichKeyMappings() end
