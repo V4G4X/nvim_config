@@ -58,7 +58,7 @@ return {
     { "jbyuki/venn.nvim" },                                                                                                                 -- ASCII Diagrams
     { "Exafunction/codeium.vim" },                                                                                                          -- Codeium Code Autocompletion
     {
-        "utilyre/barbecue.nvim",                                                                                                            -- LSP Aware Win-Bar
+        "utilyre/barbecue.nvim", -- LSP Aware Win-Bar
         name = "barbecue",
         version = "*",
         dependencies = {
@@ -85,4 +85,17 @@ return {
     },
     { 'axkirillov/hbac.nvim', config = true },                                  -- Heuristic buffer auto-close
     { "luukvbaal/nnn.nvim",   config = function() require("nnn").setup() end }, -- Provides nnn file explorer
+    {
+        "yetone/avante.nvim",
+        event = "VeryLazy",
+        build = "make",
+        version = false,
+        dependencies = {
+            "stevearc/dressing.nvim",
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+            "nvim-tree/nvim-web-devicons",
+            { 'MeanderingProgrammer/render-markdown.nvim', opts = { file_types = { "markdown", "Avante" }, }, ft = { "markdown", "Avante" }, },
+        },
+    },
 }

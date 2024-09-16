@@ -10,8 +10,8 @@ function Fugitive()
 
     -- Key maps
     require("which-key").add({
-        { "<leader>g",  group = "Git" },
-        { "<leader>gb", "<cmd>GBrowse<CR>", desc = "Open in Browser" },
+        { "<leader>g",  group = "Git",      mode = { "n", "v" } },
+        { "<leader>gb", "<cmd>GBrowse<CR>", desc = "Open in Browser", mode = { "n", "v" } },
         { "<leader>gs", vim.cmd.Git,        desc = "Fugitive" },
     })
 end
