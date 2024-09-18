@@ -1,14 +1,20 @@
 return {
     { "rebelot/kanagawa.nvim" },
-    { "catppuccin/nvim",                 name = "catppuccin",                                             priority = 1000 },               -- Theme
-    { "nvim-tree/nvim-tree.lua",         dependencies = { "nvim-tree/nvim-web-devicons", },               version = "*",    lazy = true }, -- Tree Explorer
-    { "tpope/vim-fugitive" },                                                                                                              -- Git Tools
-    { 'shumphrey/fugitive-gitlab.vim' },                                                                                                   -- Gitlab Blame Integration
+    { "catppuccin/nvim",               name = "catppuccin",                               priority = 1000 },               -- Theme
+    { "nvim-tree/nvim-tree.lua",       dependencies = { "nvim-tree/nvim-web-devicons", }, version = "*",    lazy = true }, -- Tree Explorer
+    { "tpope/vim-fugitive" },                                                                                              -- Git Tools
+    { 'shumphrey/fugitive-gitlab.vim' },                                                                                   -- Gitlab Blame Integration
     { 'tpope/vim-rhubarb' },
-    { "nvim-lua/plenary.nvim" },                                                                                                           -- Library of functions
-    { 'nvim-telescope/telescope.nvim',   dependencies = { 'nvim-lua/plenary.nvim' },                      branch = '0.1.x', },             -- File Operations
-    { "nvim-treesitter/nvim-treesitter", dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" } },                               -- Parsers
-    { "sanfusu/neovim-undotree" },                                                                                                         -- UndoTree
+    { "nvim-lua/plenary.nvim" },                                                                                           -- Library of functions
+    { 'nvim-telescope/telescope.nvim', dependencies = { 'nvim-lua/plenary.nvim' },        branch = '0.1.x', },             -- File Operations
+    {
+        "nvim-treesitter/nvim-treesitter",
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter-textobjects",
+            "nvim-treesitter/nvim-treesitter-context"
+        }
+    },                             -- Parsers
+    { "sanfusu/neovim-undotree" }, -- UndoTree
     {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
@@ -58,7 +64,7 @@ return {
     { "jbyuki/venn.nvim" },                                                                                                                 -- ASCII Diagrams
     { "Exafunction/codeium.vim" },                                                                                                          -- Codeium Code Autocompletion
     {
-        "utilyre/barbecue.nvim", -- LSP Aware Win-Bar
+        "utilyre/barbecue.nvim",                                                                                                            -- LSP Aware Win-Bar
         name = "barbecue",
         version = "*",
         dependencies = {
