@@ -1,12 +1,12 @@
 -- Util functions
 local function toggleInlayHints()
     if vim.fn.has "nvim-0.10" == 1 then
-        local ok = pcall(vim.lsp.inlay_hint.enable, vim.lsp.inlay_hint.is_enabled())
-        if ok then
-            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-        else
-            vim.lsp.inlay_hint.enable(0, not vim.lsp.inlay_hint.is_enabled())
+        local success, result = pcall(vim.lsp.inlay_hint.enable, not vim.lsp.inlay_hint.is_enabled())
+        if not success then
+            vim.notify("Failed to toggle inlay hints: " .. result, vim.log.levels.ERROR)
         end
+    else
+        vim.notify("Inlay hints require Neovim 0.10 or later", vim.log.levels.WARN)
     end
 end
 
@@ -17,10 +17,10 @@ function InitLspPlugin()
         group = vim.api.nvim_create_augroup("UserLspConfig", {}),
         callback = function(args)
             local client = vim.lsp.get_client_by_id(args.data.client_id)
-            if client ~= nil and client.server_capabilities.codeLensProvider then
+            if client and client.server_capabilities.codeLensProvider then
                 vim.lsp.codelens.refresh()
             end
-            if client ~= nil and client.server_capabilities.inlayHintProvider then
+            if client and client.server_capabilities.inlayHintProvider then
                 vim.lsp.inlay_hint.enable(true)
             end
             -- whatever other lsp config you want
@@ -90,17 +90,29 @@ function InitLspPlugin()
         },
     })
 
-    -- (Optional) Integrate Language specific features applications
-    local null_ls = require("null-ls")
-    null_ls.setup({
-        sources = {
-            null_ls.builtins.formatting.goimports,
-            null_ls.builtins.formatting.prettier,
-            null_ls.builtins.diagnostics.cfn_lint,
-            null_ls.builtins.diagnostics.markdownlint,
-            null_ls.builtins.completion.spell,
-        },
+    lspconfig.yamlls.setup({
+        settings = {
+            yaml = {
+                validate = false,
+            }
+        }
     })
+
+    -- (Optional) Integrate Language specific features applications
+    local function setup_null_ls()
+        local null_ls = require("null-ls")
+        null_ls.setup({
+            sources = {
+                null_ls.builtins.formatting.goimports,
+                null_ls.builtins.formatting.prettier,
+                null_ls.builtins.diagnostics.cfn_lint,
+                null_ls.builtins.diagnostics.markdownlint,
+                null_ls.builtins.completion.spell,
+            },
+        })
+    end
+
+    setup_null_ls()
 
     lspZero.setup()
 end
