@@ -5,7 +5,6 @@ return {
     { "tpope/vim-fugitive" },                                                                                              -- Git Tools
     { 'shumphrey/fugitive-gitlab.vim' },                                                                                   -- Gitlab Blame Integration
     { 'tpope/vim-rhubarb' },
-    { "nvim-lua/plenary.nvim" },                                                                                           -- Library of functions
     { 'nvim-telescope/telescope.nvim', dependencies = { 'nvim-lua/plenary.nvim' },        branch = '0.1.x', },             -- File Operations
     {
         "nvim-treesitter/nvim-treesitter",
@@ -56,7 +55,6 @@ return {
     { 'rcarriga/nvim-notify' },                                                                                                             -- A better looking notification system
     { "LintaoAmons/easy-commands.nvim",   event = "VeryLazy" },                                                                             -- A central interface to look up commands across plugins
     { "vinnymeller/swagger-preview.nvim", build = "npm install -g swagger-ui-watcher" },                                                    -- Preview for Swagger Files
-    { 'echasnovski/mini.nvim',            version = '*' },                                                                                  -- Animations
     { "toppair/peek.nvim",                build = "deno task --quiet build:fast",                                 event = { "VeryLazy" } }, -- Markdown Preview
     { 'ldelossa/litee-calltree.nvim',     dependencies = { 'ldelossa/litee.nvim' } },                                                       -- View Incoming/Outgoing Call Tree
     { "chrisgrieser/nvim-spider",         lazy = true },                                                                                    -- Motion Traversal over SubWords
@@ -80,11 +78,10 @@ return {
         keys = { { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" }, },
         config = function() require("outline").setup() end,
     },
-    { "sontungexpt/sttusline",               branch = "table_version", event = { "BufEnter" }, dependencies = { "nvim-tree/nvim-web-devicons" } }, -- Light Lazyloading StatusLine
-    { "lukas-reineke/indent-blankline.nvim", main = "ibl" },                                                                                       -- Indentation Virtual Guides
-    { 'rmagatti/auto-session' },                                                                                                                   -- Auto Session Management
+    { "lukas-reineke/indent-blankline.nvim", main = "ibl" }, -- Indentation Virtual Guides
+    { 'rmagatti/auto-session' },                             -- Auto Session Management
     {
-        "ray-x/lsp_signature.nvim",                                                                                                                -- Provides function signature while typing
+        "ray-x/lsp_signature.nvim",                          -- Provides function signature while typing
         event = "VeryLazy",
         opts = {},
         config = function(_, opts) require 'lsp_signature'.setup(opts) end

@@ -2,7 +2,6 @@
 require("core.plugin_configs.themes")
 
 -- Plugins
-require("core.plugin_configs.animate")
 require("core.plugin_configs.autoSessions")
 require("core.plugin_configs.avante")
 require("core.plugin_configs.bufferline")
@@ -22,7 +21,6 @@ require("core.plugin_configs.nvimtree")
 require("core.plugin_configs.oil")
 require("core.plugin_configs.peek")
 require("core.plugin_configs.spider")
-require("core.plugin_configs.sttusline")
 require("core.plugin_configs.swagger")
 require("core.plugin_configs.telescope")
 require("core.plugin_configs.toggleterm")
