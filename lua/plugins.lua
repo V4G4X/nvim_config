@@ -86,9 +86,10 @@ return {
         opts = {},
         config = function(_, opts) require 'lsp_signature'.setup(opts) end
     },
-    { 'axkirillov/hbac.nvim',   config = true },                                  -- Heuristic buffer auto-close
-    { "luukvbaal/nnn.nvim",     config = function() require("nnn").setup() end }, -- Provides nnn file explorer
-    { "nvim-pack/nvim-spectre", dependencies = { "nvim-lua/plenary.nvim", }, },   -- Find and Replae
+    { 'axkirillov/hbac.nvim',   config = true },                                                                                         -- Heuristic buffer auto-close
+    { "luukvbaal/nnn.nvim",     config = function() require("nnn").setup() end },                                                        -- Provides nnn file explorer
+    { "mfussenegger/nvim-dap",  dependencies = { "rcarriga/nvim-dap-ui", "theHamsta/nvim-dap-virtual-text", "nvim-neotest/nvim-nio" } }, -- Debug Adapter Protocol
+    { "nvim-pack/nvim-spectre", dependencies = { "nvim-lua/plenary.nvim", }, },                                                          -- Find and Replae
     {
         "yetone/avante.nvim",
         event = "VeryLazy",
