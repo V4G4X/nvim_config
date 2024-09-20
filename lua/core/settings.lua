@@ -23,3 +23,21 @@ vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
+
+-- Enable line and column display in the status line
+vim.opt.ruler = true
+
+-- Enable mouse support
+vim.opt.mouse = 'a'
+
+-- Enable highlighting of the current line
+vim.opt.cursorline = true
+
+-- Ignore case when searching
+vim.opt.ignorecase = true
+
+-- Override the 'ignorecase' option if the search pattern contains upper case characters
+vim.opt.smartcase = true
+
+-- Show matching brackets
+vim.opt.showmatch = true

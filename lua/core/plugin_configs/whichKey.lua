@@ -7,7 +7,8 @@ function SetGeneralWhichKeyMappings()
     end
 
     -- Key maps
-    require("which-key").add({
+    local wk = require("which-key")
+    wk.add({
         { "<leader>r",  group = "Registers" },
         { "<leader>ry", copyRegisterToClipboard, desc = "Yank register to clipboard" },
     })
