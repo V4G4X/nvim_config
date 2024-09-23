@@ -38,6 +38,3 @@ vim.opt.ignorecase = true
 
 -- Override the 'ignorecase' option if the search pattern contains upper case characters
 vim.opt.smartcase = true
-
--- Show matching brackets
-vim.opt.showmatch = true
