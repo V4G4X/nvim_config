@@ -24,6 +24,7 @@
   "lsp_signature.nvim": { "branch": "master", "commit": "fc38521ea4d9ec8dbd4c2819ba8126cea743943b" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "25c11854aa25558ee6c03432edfa0df0217324be" },
   "mason.nvim": { "branch": "main", "commit": "e2f7f9044ec30067bc11800a9e266664b88cda22" },
+  "multicursor.nvim": { "branch": "1.0", "commit": "15f175340243be2dd3639ada3a39a0229edfd32e" },
   "neovim-undotree": { "branch": "main", "commit": "883cba4a2a29c1be0316c8a9b5f9d706f513d30f" },
   "none-ls.nvim": { "branch": "main", "commit": "9b98991e15dce8fc502993e23caac2528b8b667f" },
   "nui.nvim": { "branch": "main", "commit": "b58e2bfda5cea347c9d58b7f11cf3012c7b3953f" },
