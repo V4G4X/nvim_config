@@ -12,5 +12,10 @@ return {
             { desc = "Search Current Word" })
         vim.keymap.set("n", "<leader>sf", function() require('spectre').open_file_search({ select_word = true }) end,
             { desc = "Search in Current File" })
+        vim.keymap.set("v", "<leader>ss", function()
+            vim.cmd('noau normal! "vy"')
+            local text = vim.fn.getreg('v')
+            require('spectre').open({ search_text = text })
+        end, { desc = "Search selection" })
     end,
 }

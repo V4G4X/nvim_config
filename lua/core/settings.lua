@@ -30,9 +30,6 @@ vim.opt.ruler = true
 -- Enable mouse support
 vim.opt.mouse = 'a'
 
--- Copy/paste from system clipboard
-vim.opt.clipboard = 'unnamedplus'
-
 -- Enable highlighting of the current line
 vim.opt.cursorline = true
 
