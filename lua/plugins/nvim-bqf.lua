@@ -1,4 +1,8 @@
 -- QuickFix window alternative
-return {
-    'kevinhwang91/nvim-bqf'
-}
+if not vim.g.vscode then
+    return {
+        'kevinhwang91/nvim-bqf'
+    }
+end
+
+return {}

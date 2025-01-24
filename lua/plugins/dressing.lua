@@ -1,4 +1,8 @@
 -- Improves the default Vim interfaces
-return {
-    'stevearc/dressing.nvim',
-}
+if not vim.g.vscode then
+    return {
+        'stevearc/dressing.nvim',
+    }
+end
+
+return {}
