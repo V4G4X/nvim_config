@@ -39,6 +39,8 @@ vim.opt.ignorecase = true
 -- Override the 'ignorecase' option if the search pattern contains upper case characters
 vim.opt.smartcase = true
 
+vim.o.exrc = true
+
 -- Keymaps for moving lines/selections up and down
 vim.keymap.set("n", "<C-k>", ":m .-2<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-j>", ":m .+1<CR>", { noremap = true, silent = true })
