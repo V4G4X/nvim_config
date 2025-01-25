@@ -27,6 +27,7 @@ return {
         { 'hrsh7th/nvim-cmp' },                  -- Required
         { 'hrsh7th/cmp-nvim-lsp' },              -- Required
         { 'L3MON4D3/LuaSnip' },                  -- Required
+        { "folke/neoconf.nvim" }                 -- Project level configurations
     },
     config = function()
         -- Enable inlay hints
@@ -76,6 +77,10 @@ return {
         end)
 
 
+        require("neoconf").setup({
+            -- override any of the default settings here
+        })
+
         -- (Optional) Configure lua language servers for neovim
         local lspconfig = require('lspconfig')
 
@@ -87,7 +92,6 @@ return {
             single_file_support = true,
             settings = {
                 gopls = {
-                    gofumpt = true,
                     staticcheck = true,
                     analyses = {
                         unusedparams = true,
@@ -106,31 +110,20 @@ return {
             },
         })
 
-        lspconfig.yamlls.setup({
-            settings = {
-                yaml = {
-                    validate = false,
-                }
-            }
-        })
 
         -- (Optional) Integrate Language specific features applications
-        local function setup_null_ls()
-            local null_ls = require("null-ls")
-            null_ls.setup({
-                sources = {
-                    null_ls.builtins.formatting.black,
-                    null_ls.builtins.formatting.isort,
-                    null_ls.builtins.formatting.goimports,
-                    null_ls.builtins.formatting.prettier,
-                    null_ls.builtins.diagnostics.cfn_lint,
-                    null_ls.builtins.diagnostics.markdownlint,
-                    null_ls.builtins.completion.spell,
-                },
-            })
-        end
-
-        setup_null_ls()
+        local null_ls = require("null-ls")
+        null_ls.setup({
+            sources = {
+                null_ls.builtins.formatting.black,
+                null_ls.builtins.formatting.isort,
+                null_ls.builtins.formatting.goimports,
+                null_ls.builtins.formatting.prettier,
+                null_ls.builtins.diagnostics.cfn_lint,
+                null_ls.builtins.diagnostics.markdownlint,
+                null_ls.builtins.completion.spell,
+            },
+        })
 
         lspZero.setup()
     end,
