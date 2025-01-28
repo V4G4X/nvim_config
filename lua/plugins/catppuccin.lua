@@ -37,7 +37,6 @@ if not vim.g.vscode then
 
             -- setup must be called before loading
             -- vim.cmd.colorscheme "catppuccin"
-            vim.cmd('hi LineNr guifg=#AAAAAA') -- Set Line Number coloring to be lighter than the theme default
         end
     }
 end

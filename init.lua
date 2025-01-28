@@ -16,3 +16,6 @@ vim.g.mapleader = " " -- Make sure to set `mapleader` before lazy so your mappin
 require("plugins")
 -- Load core configurations
 require("core")
+
+vim.cmd.colorscheme "kanagawa"
+vim.cmd('hi LineNr guifg=#AAAAAA') -- Set Line Number coloring to be lighter than the theme default

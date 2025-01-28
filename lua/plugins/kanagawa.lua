@@ -25,10 +25,8 @@ if not vim.g.vscode then
             })
 
             -- Load the theme
-            require("kanagawa").load(theme)
 
             -- Set Line Number coloring to be lighter than the theme default
-            vim.cmd('hi LineNr guifg=#AAAAAA')
         end,
     }
 end
