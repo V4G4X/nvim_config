@@ -57,6 +57,7 @@ return {
                 { "<leader>l",   group = "LSP" },
                 { "<leader>lA",  vim.lsp.codelens.run,                                desc = "CodeLens Action" },
                 { "<leader>lR",  vim.lsp.buf.rename,                                  desc = "Rename" },
+                { "<leader>lS",  vim.lsp.buf.signature_help,                          desc = "Signature" },
                 { "<leader>lT",  group = "Toggle" },
                 { "<leader>lTh", toggleInlayHints,                                    desc = "Toggle Inlay Hints" },
                 { "<leader>la",  vim.lsp.buf.code_action,                             desc = "Code Actions",      mode = { "n", "v" } },
