@@ -13,8 +13,42 @@ return {
 	"VonHeikemen/lsp-zero.nvim",
 	branch = "v2.x",
 	dependencies = {
+		{
+			"folke/neoconf.nvim", -- Project level configurations (HAS TO BE BEFORE any LSP is set up)
+			config = function()
+				require("neoconf").setup()
+			end,
+		},
 		-- LSP Support
-		{ "neovim/nvim-lspconfig" }, -- Required
+		{
+			"neovim/nvim-lspconfig",
+			event = { "BufReadPre", "BufNewFile" },
+			config = function()
+				require("lspconfig").gopls.setup({
+					cmd = { "gopls" },
+					filetypes = { "go", "gomod", "gowork", "gotmpl" },
+					single_file_support = true,
+					settings = {
+						gopls = {
+							staticcheck = true,
+							analyses = {
+								unusedparams = true,
+								unusedvariable = true,
+								unusedwrite = true,
+							},
+							hints = {
+								assignVariableTypes = true,
+								compositeLiteralFields = true,
+								compositeLiteralTypes = true,
+								constantValues = true,
+								parameterNames = true,
+								rangeVariableTypes = true,
+							},
+						},
+					},
+				})
+			end,
+		}, -- Required
 		{ -- Optional
 			"williamboman/mason.nvim",
 			build = function()
@@ -24,16 +58,56 @@ return {
 		{ "williamboman/mason-lspconfig.nvim" }, -- Optional
 
 		-- Formatting
-		{ "stevearc/conform.nvim" }, -- Replace null-ls for formatting
+		{
+			"stevearc/conform.nvim", -- Replace null-ls for formatting
+			event = { "BufReadPre", "BufNewFile" },
+			config = function()
+				-- Configure conform.nvim for formatting
+				require("conform").setup({
+					formatters_by_ft = {
+						lua = { "stylua" },
+						python = { "isort", "black" },
+						go = { "goimports", "gofumpt" },
+						javascript = { "prettier" },
+						typescript = { "prettier" },
+						typescriptreact = { "prettier" },
+						javascriptreact = { "prettier" },
+						json = { "prettier" },
+						html = { "prettier" },
+						css = { "prettier" },
+						yaml = { "prettier" },
+						markdown = { "prettier" },
+					},
+				})
+			end,
+		},
 
 		-- Linting
-		{ "mfussenegger/nvim-lint" }, -- Replace null-ls for linting
+		{
+			"mfussenegger/nvim-lint", -- Replace null-ls for linting
+			event = { "BufReadPre", "BufNewFile" },
+			config = function()
+				-- Configure nvim-lint for linting
+				local nvim_lint = require("lint")
+				nvim_lint.linters_by_ft = {
+					markdown = { "markdownlint" },
+					yaml = { "yamllint" },
+					gitcommit = { "gitlint" },
+					-- Add other filetypes and linters as needed
+				}
+				-- Automatically run linters when reading or writing a buffer
+				vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {
+					callback = function()
+						nvim_lint.try_lint()
+					end,
+				})
+			end,
+		},
 
 		-- Autocompletion
 		{ "hrsh7th/nvim-cmp" }, -- Required
 		{ "hrsh7th/cmp-nvim-lsp" }, -- Required
 		{ "L3MON4D3/LuaSnip" }, -- Required
-		{ "folke/neoconf.nvim" }, -- Project level configurations
 	},
 	config = function()
 		-- Enable inlay hints
@@ -65,17 +139,8 @@ return {
 				{ "<leader>lR", vim.lsp.buf.rename, desc = "Rename" },
 				{ "<leader>lS", vim.lsp.buf.signature_help, desc = "Signature" },
 				{ "<leader>lT", group = "Toggle" },
-				{
-					"<leader>lTh",
-					toggleInlayHints,
-					desc = "Toggle Inlay Hints",
-				},
-				{
-					"<leader>la",
-					vim.lsp.buf.code_action,
-					desc = "Code Actions",
-					mode = { "n", "v" },
-				},
+				{ "<leader>lTh", toggleInlayHints, desc = "Toggle Inlay Hints" },
+				{ "<leader>la", vim.lsp.buf.code_action, desc = "Code Actions", mode = { "n", "v" } },
 				{ "<leader>lc", group = "Calls" },
 				{ "<leader>lci", telescopeBuiltin.lsp_incoming_calls, desc = "Incoming" },
 				{ "<leader>lco", telescopeBuiltin.lsp_outgoing_calls, desc = "Outgoing" },
@@ -86,6 +151,7 @@ return {
 						require("conform").format({ async = true })
 					end,
 					desc = "Format",
+					mode = { "n", "v" },
 				},
 				{ "<leader>li", telescopeBuiltin.lsp_implementations, desc = "Implementations" },
 				{ "<leader>lr", vim.lsp.buf.references, desc = "References" },
@@ -95,75 +161,15 @@ return {
 				{ "<leader>lt", vim.lsp.buf.type_definition, desc = "Type Definition" },
 			})
 
-			vim.diagnostic.config({ virtual_text = false }) -- Don't display all diagnostics in the buffer
+			vim.diagnostic.config({
+				virtual_lines = true,
+				severity_sort = true,
+			}) -- Don't display all diagnostics in the buffer
 		end)
 
-		require("neoconf").setup({
-			-- override any of the default settings here
-		})
-
 		-- (Optional) Configure lua language servers for neovim
-		local lspconfig = require("lspconfig")
-
-		lspconfig.lua_ls.setup(lspZero.nvim_lua_ls())
-
-		lspconfig.gopls.setup({
-			cmd = { "gopls" },
-			filetypes = { "go", "gomod", "gowork", "gotmpl" },
-			single_file_support = true,
-			settings = {
-				gopls = {
-					staticcheck = true,
-					analyses = {
-						unusedparams = true,
-						unusedvariable = true,
-						unusedwrite = true,
-					},
-					hints = {
-						assignVariableTypes = true,
-						compositeLiteralFields = true,
-						compositeLiteralTypes = true,
-						constantValues = true,
-						parameterNames = true,
-						rangeVariableTypes = true,
-					},
-				},
-			},
-		})
+		require("lspconfig").lua_ls.setup(lspZero.nvim_lua_ls())
 
 		lspZero.setup()
-
-		-- Configure conform.nvim for formatting
-		local conform = require("conform")
-		conform.setup({
-			formatters_by_ft = {
-				lua = { "stylua" },
-				python = { "isort", "black" },
-				go = { "goimports", "gofumpt" },
-				javascript = { "prettier" },
-				typescript = { "prettier" },
-				typescriptreact = { "prettier" },
-				javascriptreact = { "prettier" },
-				json = { "prettier" },
-				html = { "prettier" },
-				css = { "prettier" },
-				yaml = { "prettier" },
-				markdown = { "prettier" },
-			},
-		})
-
-		-- Configure nvim-lint for linting
-		local nvim_lint = require("lint")
-		nvim_lint.linters_by_ft = {
-			markdown = { "markdownlint" },
-			yaml = { "yamllint" },
-			-- Add other filetypes and linters as needed
-		}
-		-- Automatically run linters when reading or writing a buffer
-		vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost" }, {
-			callback = function()
-				nvim_lint.try_lint()
-			end,
-		})
 	end,
 }
