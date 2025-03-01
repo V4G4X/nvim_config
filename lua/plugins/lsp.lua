@@ -133,33 +133,55 @@ return {
 
 			local telescopeBuiltin = require("telescope.builtin")
 
-			require("which-key").add({
-				{ "<leader>l", group = "LSP" },
-				{ "<leader>lA", vim.lsp.codelens.run, desc = "CodeLens Action" },
-				{ "<leader>lR", vim.lsp.buf.rename, desc = "Rename" },
-				{ "<leader>lS", vim.lsp.buf.signature_help, desc = "Signature" },
-				{ "<leader>lT", group = "Toggle" },
-				{ "<leader>lTh", toggleInlayHints, desc = "Toggle Inlay Hints" },
-				{ "<leader>la", vim.lsp.buf.code_action, desc = "Code Actions", mode = { "n", "v" } },
-				{ "<leader>lc", group = "Calls" },
-				{ "<leader>lci", telescopeBuiltin.lsp_incoming_calls, desc = "Incoming" },
-				{ "<leader>lco", telescopeBuiltin.lsp_outgoing_calls, desc = "Outgoing" },
-				{ "<leader>le", telescopeBuiltin.diagnostics, desc = "Diagnostics" },
-				{
-					"<leader>lf",
-					function()
-						require("conform").format({ async = true })
-					end,
-					desc = "Format",
-					mode = { "n", "v" },
-				},
-				{ "<leader>li", telescopeBuiltin.lsp_implementations, desc = "Implementations" },
-				{ "<leader>lr", vim.lsp.buf.references, desc = "References" },
-				{ "<leader>ls", group = "Symbols" },
-				{ "<leader>lsd", telescopeBuiltin.lsp_document_symbols, desc = "Document" },
-				{ "<leader>lsw", telescopeBuiltin.lsp_dynamic_workspace_symbols, desc = "Workspace" },
-				{ "<leader>lt", vim.lsp.buf.type_definition, desc = "Type Definition" },
-			})
+			-- Register groups
+			vim.keymap.set("n", "<leader>l", "", { buffer = bufnr, desc = "LSP" })
+			vim.keymap.set("n", "<leader>lT", "", { buffer = bufnr, desc = "Toggle" })
+			vim.keymap.set("n", "<leader>lc", "", { buffer = bufnr, desc = "Calls" })
+			vim.keymap.set("n", "<leader>ls", "", { buffer = bufnr, desc = "Symbols" })
+
+			-- LSP keymaps using vim.keymap.set
+			vim.keymap.set("n", "<leader>lA", vim.lsp.codelens.run, { buffer = bufnr, desc = "CodeLens Action" })
+			vim.keymap.set("n", "<leader>lR", vim.lsp.buf.rename, { buffer = bufnr, desc = "Rename" })
+			vim.keymap.set("n", "<leader>lS", vim.lsp.buf.signature_help, { buffer = bufnr, desc = "Signature" })
+			vim.keymap.set("n", "<leader>lTh", toggleInlayHints, { buffer = bufnr, desc = "Toggle Inlay Hints" })
+			vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { buffer = bufnr, desc = "Code Actions" })
+			vim.keymap.set("v", "<leader>la", vim.lsp.buf.code_action, { buffer = bufnr, desc = "Code Actions" })
+			vim.keymap.set(
+				"n",
+				"<leader>lci",
+				telescopeBuiltin.lsp_incoming_calls,
+				{ buffer = bufnr, desc = "Incoming Calls" }
+			)
+			vim.keymap.set(
+				"n",
+				"<leader>lco",
+				telescopeBuiltin.lsp_outgoing_calls,
+				{ buffer = bufnr, desc = "Outgoing Calls" }
+			)
+			vim.keymap.set("n", "<leader>le", telescopeBuiltin.diagnostics, { buffer = bufnr, desc = "Diagnostics" })
+			vim.keymap.set({ "n", "v" }, "<leader>lf", function()
+				require("conform").format({ async = true })
+			end, { buffer = bufnr, desc = "Format" })
+			vim.keymap.set(
+				"n",
+				"<leader>li",
+				telescopeBuiltin.lsp_implementations,
+				{ buffer = bufnr, desc = "Implementations" }
+			)
+			vim.keymap.set("n", "<leader>lr", vim.lsp.buf.references, { buffer = bufnr, desc = "References" })
+			vim.keymap.set(
+				"n",
+				"<leader>lsd",
+				telescopeBuiltin.lsp_document_symbols,
+				{ buffer = bufnr, desc = "Document Symbols" }
+			)
+			vim.keymap.set(
+				"n",
+				"<leader>lsw",
+				telescopeBuiltin.lsp_dynamic_workspace_symbols,
+				{ buffer = bufnr, desc = "Workspace Symbols" }
+			)
+			vim.keymap.set("n", "<leader>lt", vim.lsp.buf.type_definition, { buffer = bufnr, desc = "Type Definition" })
 
 			vim.diagnostic.config({
 				virtual_lines = true,
