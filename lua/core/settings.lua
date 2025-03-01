@@ -28,7 +28,7 @@ vim.opt.updatetime = 50
 vim.opt.ruler = true
 
 -- Enable mouse support
-vim.opt.mouse = 'a'
+vim.opt.mouse = "a"
 
 -- Enable highlighting of the current line
 vim.opt.cursorline = true
@@ -51,15 +51,18 @@ vim.keymap.set("v", "<C-j>", ":m '>+1<CR>gv", { noremap = true, silent = true })
 vim.keymap.set("n", "]q", ":cnext<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "[q", ":cprev<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>q", function()
-    local qf_exists = false
-    for _, win in pairs(vim.fn.getwininfo()) do
-        if win["quickfix"] == 1 then
-            qf_exists = true
-        end
-    end
-    if qf_exists == true then
-        vim.cmd "cclose"
-    else
-        vim.cmd "copen"
-    end
+	local qf_exists = false
+	for _, win in pairs(vim.fn.getwininfo()) do
+		if win["quickfix"] == 1 then
+			qf_exists = true
+		end
+	end
+	if qf_exists == true then
+		vim.cmd("cclose")
+	else
+		vim.cmd("copen")
+	end
 end, { noremap = true, silent = true, desc = "Toggle quickfix list" })
+
+ -- View Diagnostics in style
+vim.diagnostic.config({ virtual_lines = true, severity_sort = true })
