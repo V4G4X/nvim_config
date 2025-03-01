@@ -197,6 +197,7 @@ return {
 
 			require("lspconfig").yamlls.setup({})
 			require("lspconfig").marksman.setup({})
+			require("lspconfig").pyright.setup({})
 
 			-- Add additional capabilities supported by nvim-cmp
 			local cmp = require("cmp")
