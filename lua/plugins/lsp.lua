@@ -92,6 +92,7 @@ return {
 			-- Autocompletion
 			"hrsh7th/nvim-cmp",
 			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-nvim-lsp-signature-help",
 		},
 		event = { "BufReadPre", "BufNewFile" },
 		keys = {
@@ -197,6 +198,7 @@ return {
 			cmp.setup({
 				sources = {
 					{ name = "nvim_lsp" },
+					{ name = "nvim_lsp_signature_help" },
 				},
 				snippet = {
 					expand = function(args)
