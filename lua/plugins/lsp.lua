@@ -179,7 +179,11 @@ return {
 				},
 			})
 
-			require("lspconfig").lua_ls.setup({
+			vim.lsp.config["luals"] = {
+				-- Command and arguments to start the server.
+				cmd = { "lua-language-server" },
+				-- Filetypes to automatically attach to.
+				filetypes = { "lua" },
 				settings = {
 					Lua = {
 						diagnostics = {
@@ -188,7 +192,8 @@ return {
 						},
 					},
 				},
-			})
+			}
+			vim.lsp.enable("luals")
 
 			require("lspconfig").yamlls.setup({})
 			require("lspconfig").marksman.setup({})
