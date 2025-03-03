@@ -90,9 +90,30 @@ return {
 				end,
 			},
 			-- Autocompletion
-			"hrsh7th/nvim-cmp",
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-nvim-lsp-signature-help",
+			{
+				"hrsh7th/nvim-cmp",
+				dependencies = {
+					"hrsh7th/cmp-nvim-lsp",
+					"hrsh7th/cmp-nvim-lsp-signature-help",
+				},
+				config = function()
+					-- Add additional capabilities supported by nvim-cmp
+					local cmp = require("cmp")
+					cmp.setup({
+						sources = {
+							{ name = "nvim_lsp" },
+							{ name = "nvim_lsp_signature_help" },
+						},
+						snippet = {
+							expand = function(args)
+								-- You need Neovim v0.10 to use vim.snippet
+								vim.snippet.expand(args.body)
+							end,
+						},
+						mapping = cmp.mapping.preset.insert({}),
+					})
+				end,
+			},
 		},
 		event = { "BufReadPre", "BufNewFile" },
 		keys = {
@@ -112,11 +133,6 @@ return {
 			},
 		},
 		config = function()
-			-- Add cmp_nvim_lsp capabilities settings to lspconfig
-			-- This should be executed before you configure any language server
-			local lspconfig_defaults = require("lspconfig").util.default_config
-			lspconfig_defaults.capabilities = vim.tbl_deep_extend("force", lspconfig_defaults.capabilities, require("cmp_nvim_lsp").default_capabilities())
-
 			vim.api.nvim_create_autocmd("LspAttach", {
 				desc = "LSP actions",
 				callback = function(event)
@@ -140,24 +156,13 @@ return {
 				end,
 			})
 
-			-- Enable inlay hints
-			vim.api.nvim_create_autocmd("LspAttach", {
-				group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-				callback = function(args)
-					local client = vim.lsp.get_client_by_id(args.data.client_id)
-					if client and client.server_capabilities.codeLensProvider then
-						vim.lsp.codelens.refresh()
-					end
-					if client and client.server_capabilities.inlayHintProvider then
-						vim.lsp.inlay_hint.enable(true)
-					end
-					-- whatever other lsp config you want
-				end,
-			})
+			-- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 			require("lspconfig").gopls.setup({
 				cmd = { "gopls" },
 				filetypes = { "go", "gomod", "gowork", "gotmpl" },
+				capabilities = capabilities,
 				single_file_support = true,
 				settings = {
 					gopls = {
@@ -178,12 +183,27 @@ return {
 					},
 				},
 			})
+			-- Enable inlay hints
+			vim.api.nvim_create_autocmd("LspAttach", {
+				group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+				callback = function(args)
+					local client = vim.lsp.get_client_by_id(args.data.client_id)
+					if client and client.server_capabilities.codeLensProvider then
+						vim.lsp.codelens.refresh()
+					end
+					if client and client.server_capabilities.inlayHintProvider then
+						vim.lsp.inlay_hint.enable(true)
+					end
+					-- whatever other lsp config you want
+				end,
+			})
 
 			vim.lsp.config["luals"] = {
 				-- Command and arguments to start the server.
 				cmd = { "lua-language-server" },
 				-- Filetypes to automatically attach to.
 				filetypes = { "lua" },
+				capabilities = capabilities,
 				settings = {
 					Lua = {
 						diagnostics = {
@@ -195,24 +215,14 @@ return {
 			}
 			vim.lsp.enable("luals")
 
-			require("lspconfig").yamlls.setup({})
-			require("lspconfig").marksman.setup({})
-			require("lspconfig").pyright.setup({})
-
-			-- Add additional capabilities supported by nvim-cmp
-			local cmp = require("cmp")
-			cmp.setup({
-				sources = {
-					{ name = "nvim_lsp" },
-					{ name = "nvim_lsp_signature_help" },
-				},
-				snippet = {
-					expand = function(args)
-						-- You need Neovim v0.10 to use vim.snippet
-						vim.snippet.expand(args.body)
-					end,
-				},
-				mapping = cmp.mapping.preset.insert({}),
+			require("lspconfig").yamlls.setup({
+				capabilities = capabilities,
+			})
+			require("lspconfig").marksman.setup({
+				capabilities = capabilities,
+			})
+			require("lspconfig").pyright.setup({
+				capabilities = capabilities,
 			})
 		end,
 	},
