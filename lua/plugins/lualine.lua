@@ -9,12 +9,6 @@ if not vim.g.vscode then
 		local buf_client_names = {}
 		local num_client_names = #buf_client_names
 
-		-- Add lsp-clients active in the current buffer
-		for _, client in pairs(buf_clients) do
-			num_client_names = num_client_names + 1
-			buf_client_names[num_client_names] = client.name .. " LSP"
-		end
-
 		-- Add linters for the current filetype (nvim-lint)
 		local lint_success, lint = pcall(require, "lint")
 		if lint_success then
@@ -55,24 +49,18 @@ if not vim.g.vscode then
 		"nvim-lualine/lualine.nvim",
 		event = { "VimEnter", "BufReadPost", "BufNewFile" },
 		config = function()
-			local attached_clients = {
-				get_attached_clients,
-				color = {
-					gui = "bold",
-				},
-			}
+			local attached_clients = { get_attached_clients }
 			-- Example lualine setup
 			require("lualine").setup({
 				options = {
 					icons_enabled = true,
 					theme = "auto",
 					globalstatus = true,
-					component_separators = { left = "|", right = "|" },
 				},
 
 				sections = {
-					lualine_b = { "branch", "diff" },
-					lualine_x = { "diagnostics", attached_clients, "filetype" },
+					lualine_x = { attached_clients, "lsp_status" },
+					lualine_y = { "filetype", "progress" },
 				},
 			})
 		end,
