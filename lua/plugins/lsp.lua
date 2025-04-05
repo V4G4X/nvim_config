@@ -54,7 +54,7 @@ if not vim.g.vscode then
 						html = { "prettier" },
 						css = { "prettier" },
 						yaml = { "yamlfmt" },
-						markdown = { "markdownlint" },
+						markdown = { "mdformat" },
 					},
 				})
 			end,
@@ -92,28 +92,28 @@ if not vim.g.vscode then
 				},
 				-- Autocompletion
 				{
-					"hrsh7th/nvim-cmp",
-					dependencies = {
-						"hrsh7th/cmp-nvim-lsp",
-						"hrsh7th/cmp-nvim-lsp-signature-help",
+					-- Refer: https://cmp.saghen.dev/installation.html
+					"saghen/blink.cmp",
+					-- optional: provides snippets for the snippet source
+					dependencies = { "rafamadriz/friendly-snippets" },
+
+					version = "1.*",
+					---@module 'blink.cmp'
+					---@type blink.cmp.Config
+					opts = {
+						keymap = { preset = "default" },
+						appearance = { nerd_font_variant = "mono" },
+						completion = {
+							accept = { auto_brackets = { enabled = true } }, -- Experimental auto-brackets support },
+							documentation = { auto_show = true },
+						},
+						sources = {
+							default = { "lsp", "path", "snippets", "buffer" },
+						},
+						fuzzy = { implementation = "prefer_rust_with_warning" },
+						signature = { enabled = true },
 					},
-					config = function()
-						-- Add additional capabilities supported by nvim-cmp
-						local cmp = require("cmp")
-						cmp.setup({
-							sources = {
-								{ name = "nvim_lsp" },
-								{ name = "nvim_lsp_signature_help" },
-							},
-							snippet = {
-								expand = function(args)
-									-- You need Neovim v0.10 to use vim.snippet
-									vim.snippet.expand(args.body)
-								end,
-							},
-							mapping = cmp.mapping.preset.insert({}),
-						})
-					end,
+					opts_extend = { "sources.default" },
 				},
 			},
 			event = { "BufReadPre", "BufNewFile" },
@@ -157,8 +157,7 @@ if not vim.g.vscode then
 					end,
 				})
 
-				-- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
-				local capabilities = require("cmp_nvim_lsp").default_capabilities()
+				local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 				require("lspconfig").gopls.setup({
 					cmd = { "gopls" },
@@ -189,10 +188,14 @@ if not vim.g.vscode then
 					group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 					callback = function(args)
 						local client = vim.lsp.get_client_by_id(args.data.client_id)
-						if client and client.server_capabilities.codeLensProvider then
+						if not client or not client.server_capabilities then
+							-- If unable to get the client, or it's server_capabilities
+							return
+						end
+						if client.server_capabilities.codeLensProvider then
 							vim.lsp.codelens.refresh()
 						end
-						if client and client.server_capabilities.inlayHintProvider then
+						if client.server_capabilities.inlayHintProvider then
 							vim.lsp.inlay_hint.enable(true)
 						end
 						-- whatever other lsp config you want
