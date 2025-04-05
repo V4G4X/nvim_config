@@ -50,7 +50,7 @@ if not vim.g.vscode then
 						typescript = { "prettier" },
 						typescriptreact = { "prettier" },
 						javascriptreact = { "prettier" },
-						json = { "prettier" },
+						json = { "fixjson" },
 						html = { "prettier" },
 						css = { "prettier" },
 						yaml = { "yamlfmt" },
@@ -58,6 +58,16 @@ if not vim.g.vscode then
 					},
 				})
 			end,
+			keys = {
+				{
+					"<leader>lf",
+					function()
+						require("conform").format({ async = true })
+					end,
+					desc = "Format",
+					mode = { "n", "v" },
+				},
+			},
 		},
 
 		{ -- Linting
@@ -70,6 +80,7 @@ if not vim.g.vscode then
 					markdown = { "markdownlint" },
 					yaml = { "yamllint" },
 					gitcommit = { "gitlint" },
+					json = { "jsonlint" },
 					-- Add other filetypes and linters as needed
 				}
 				-- Automatically run linters when reading or writing a buffer
@@ -124,36 +135,29 @@ if not vim.g.vscode then
 				{ "<leader>lc", "", desc = "Calls" },
 				{ "<leader>ls", "", desc = "Symbols" },
 				{ "<leader>lTd", toggleVirtualLines, desc = "Toggle Diagnostic Lines" },
-				{
-					"<leader>lf",
-					function()
-						require("conform").format({ async = true })
-					end,
-					desc = "Format",
-					mode = { "n", "v" },
-				},
 			},
 			config = function()
 				vim.api.nvim_create_autocmd("LspAttach", {
 					desc = "LSP actions",
 					callback = function(event)
 						local telescopeBuiltin = require("telescope.builtin")
+						local Snacks = require("snacks")
 
 						-- LSP keymaps using vim.keymap.set
 						vim.keymap.set("n", "<leader>lA", vim.lsp.codelens.run, { buffer = event.buf, desc = "CodeLens Action" })
 						vim.keymap.set("n", "<leader>lR", vim.lsp.buf.rename, { buffer = event.buf, desc = "Rename" })
 						vim.keymap.set("n", "<leader>lS", vim.lsp.buf.signature_help, { buffer = event.buf, desc = "Signature" })
 						vim.keymap.set("n", "<leader>lTh", toggleInlayHints, { buffer = event.buf, desc = "Toggle Inlay Hints" })
-						vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { buffer = event.buf, desc = "Code Actions" })
-						vim.keymap.set("v", "<leader>la", vim.lsp.buf.code_action, { buffer = event.buf, desc = "Code Actions" })
+						vim.keymap.set({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, { buffer = event.buf, desc = "Code Actions" })
 						vim.keymap.set("n", "<leader>lci", telescopeBuiltin.lsp_incoming_calls, { buffer = event.buf, desc = "Incoming Calls" })
 						vim.keymap.set("n", "<leader>lco", telescopeBuiltin.lsp_outgoing_calls, { buffer = event.buf, desc = "Outgoing Calls" })
-						vim.keymap.set("n", "<leader>le", telescopeBuiltin.diagnostics, { buffer = event.buf, desc = "Diagnostics" })
-						vim.keymap.set("n", "<leader>li", telescopeBuiltin.lsp_implementations, { buffer = event.buf, desc = "Implementations" })
-						vim.keymap.set("n", "<leader>lr", vim.lsp.buf.references, { buffer = event.buf, desc = "References" })
-						vim.keymap.set("n", "<leader>lsd", telescopeBuiltin.lsp_document_symbols, { buffer = event.buf, desc = "Document Symbols" })
-						vim.keymap.set("n", "<leader>lsw", telescopeBuiltin.lsp_dynamic_workspace_symbols, { buffer = event.buf, desc = "Workspace Symbols" })
-						vim.keymap.set("n", "<leader>lt", vim.lsp.buf.type_definition, { buffer = event.buf, desc = "Type Definition" })
+						vim.keymap.set("n", "<leader>le", Snacks.picker.diagnostics, { buffer = event.buf, desc = "Diagnostics" })
+						vim.keymap.set("n", "<leader>lE", Snacks.picker.diagnostics_buffer, { buffer = event.buf, desc = "Buffer Diagnostics" })
+						vim.keymap.set("n", "<leader>li", Snacks.picker.lsp_implementations, { buffer = event.buf, desc = "Implementations" })
+						vim.keymap.set("n", "<leader>lr", Snacks.picker.lsp_references, { buffer = event.buf, desc = "References" })
+						vim.keymap.set("n", "<leader>lsd", Snacks.picker.lsp_symbols, { buffer = event.buf, desc = "Document Symbols" })
+						vim.keymap.set("n", "<leader>lsw", Snacks.picker.lsp_workspace_symbols, { buffer = event.buf, desc = "Workspace Symbols" })
+						vim.keymap.set("n", "<leader>lt", Snacks.picker.lsp_type_definitions, { buffer = event.buf, desc = "Type Definition" })
 					end,
 				})
 
@@ -212,7 +216,7 @@ if not vim.g.vscode then
 						Lua = {
 							diagnostics = {
 								disable = { "missing-fields" },
-								globals = { "vim" }, -- Get the language server to recognize the `vim` global
+								globals = { "vim", "Snacks" }, -- Get the language server to recognize the `vim` global
 							},
 						},
 					},

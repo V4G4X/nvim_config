@@ -7,7 +7,7 @@ return {
     keys = {
         { "<leader>g",  desc = "Git",       mode = { "n", "v" } },
         { "<leader>gs", vim.cmd.Git,        desc = "Fugitive",       mode = { "n", "v" } },
-        { "<leader>gb", "<cmd>GBrowse<CR>", desc = "Open in Browser" },
+        { "<leader>gB", "<cmd>GBrowse<CR>", desc = "Open in Browser" },
     },
     config = function()
         -- Custom Browse Function for Gitlab Integration

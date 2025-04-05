@@ -3,7 +3,7 @@ if not vim.g.vscode then
 		-- Get active clients for current buffer
 		local buf_clients = vim.lsp.get_clients({ bufnr = 0 })
 		if #buf_clients == 0 then
-			return "No client active"
+			return ""
 		end
 		local buf_ft = vim.bo.filetype
 		local buf_client_names = {}
@@ -17,11 +17,11 @@ if not vim.g.vscode then
 					if type(ft_linters) == "table" then
 						for _, linter in pairs(ft_linters) do
 							num_client_names = num_client_names + 1
-							buf_client_names[num_client_names] = linter .. " LINTER"
+							buf_client_names[num_client_names] = linter .. "..L"
 						end
 					else
 						num_client_names = num_client_names + 1
-						buf_client_names[num_client_names] = ft_linters .. " LINTER"
+						buf_client_names[num_client_names] = ft_linters .. "..L"
 					end
 				end
 			end
@@ -33,7 +33,7 @@ if not vim.g.vscode then
 			for _, formatter in pairs(conform.list_formatters_for_buffer(0)) do
 				if formatter then
 					num_client_names = num_client_names + 1
-					buf_client_names[num_client_names] = formatter .. " FORMATTER"
+					buf_client_names[num_client_names] = formatter .. "..F"
 				end
 			end
 		end

@@ -1,0 +1,2 @@
+# Increase this if you want longer lines before wrapping
+column_width = 180
