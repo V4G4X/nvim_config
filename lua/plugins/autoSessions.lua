@@ -4,7 +4,7 @@ if not vim.g.vscode then
         opts = {
             log_level = "error",
             auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
-            bypass_session_save_file_types = { 'startup', 'netrw', 'blank' },
+            bypass_session_save_file_types = { 'startup', 'netrw', 'blank', 'snacks_dashboard', 'snacks_picker_input', 'Outline' },
         },
         config = function(_, opts)
             require("auto-session").setup(opts)

@@ -1,9 +1,37 @@
 if not vim.g.vscode then
 	return {
 		"folke/snacks.nvim",
+		lazy = false,
+		priority = 1000,
 		opts = {
 			picker = { layout = "bottom" },
-			notifier = {},
+			notifier = { enabled = true },
+			image = { enabled = true },
+			bigfile = { enabled = true },
+			words = { enabled = true },
+			dashboard = {
+				formats = {
+					key = function(item)
+						return { { "[", hl = "special" }, { item.key, hl = "key" }, { "]", hl = "special" } }
+					end,
+				},
+				sections = {
+					{
+						section = "terminal",
+						cmd = "fortune -s -e computers humorists wisdom | cowsay -f sus -W 40",
+						hl = "header",
+						padding = 1,
+						indent = 8,
+						width = 50,
+						height = 15,
+						ttl = 0,
+					},
+					{ icon = " ", title = "Keymaps", section = "keys", indent = 4, padding = 1 },
+					{ icon = " ", title = "Recent Files", section = "recent_files", indent = 4, padding = 1 },
+					{ icon = " ", title = "Projects", section = "projects", indent = 4, padding = 1 },
+					{ section = "startup" },
+				},
+			},
 		},
         -- stylua: ignore
         keys = {
