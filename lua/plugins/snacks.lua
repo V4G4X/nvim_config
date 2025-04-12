@@ -18,7 +18,7 @@ if not vim.g.vscode then
 				sections = {
 					{
 						section = "terminal",
-						cmd = "fortune -s -e computers humorists wisdom | cowsay -f sus -W 40",
+						cmd = "fortune -s 40% ~/.quotes/software 30% wisdom 30% humorists | cowsay -f sus -W 40",
 						hl = "header",
 						padding = 1,
 						indent = 8,
