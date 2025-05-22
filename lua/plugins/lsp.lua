@@ -44,7 +44,7 @@ if not vim.g.vscode then
 				require("conform").setup({
 					formatters_by_ft = {
 						lua = { "stylua" },
-						python = { "isort", "black" },
+						python = { "ruff_format", "ruff_organize_imports" },
 						go = { "goimports", "gofumpt" },
 						javascript = { "prettier" },
 						typescript = { "prettier" },
