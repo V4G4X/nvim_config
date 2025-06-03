@@ -18,6 +18,7 @@ if not vim.g.vscode then
 				bottom_search = true, -- use a classic bottom cmdline for search
 				command_palette = true, -- position the cmdline and popupmenu together
 				long_message_to_split = true, -- long messages will be sent to a split
+				lsp_doc_border = true,
 			},
 			notify = { enabled = false },
 		},
@@ -27,6 +28,7 @@ if not vim.g.vscode then
 		},
 		config = function(_, opts)
 			require("noice").setup(opts)
+			vim.keymap.set("n", "K", require("noice.lsp").hover, { desc = "Hover" })
 		end,
 	}
 end
