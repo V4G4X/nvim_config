@@ -7,7 +7,7 @@ if not vim.g.vscode then
 		opts = {
 			---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | "bedrock" | string
 			provider = "perplexity",
-			vendors = {
+			providers = {
 				openrouter_sonnet = {
 					__inherited_from = "openai",
 					api_key_name = "OPENROUTER_API_KEY",
@@ -26,11 +26,13 @@ if not vim.g.vscode then
 					endpoint = "https://api.perplexity.ai",
 					model = "r1-1776",
 				},
-			},
-			bedrock = {
-				model = "us.anthropic.claude-sonnet-4-20250514-v1:0",
-				aws_profile = "default",
-				aws_region = "us-east-1",
+				db_sonnet3_7 = {
+					__inherited_from = "bedrock",
+					model = "us.anthropic.claude-sonnet-3-7-20230314-v1:0",
+				},
+				bedrock = {
+					model = "us.anthropic.claude-sonnet-4-20250514-v1:0",
+				},
 			},
 			behaviour = {
 				auto_suggestions = false, -- Experimental stage
@@ -82,6 +84,14 @@ if not vim.g.vscode then
 					vim.cmd("AvanteClear")
 				end,
 				desc = "Clear Avante",
+				mode = { "n", "v" },
+			},
+			{
+				"<leader>as",
+				function()
+					vim.cmd("AvanteSwitchProvider bedrock")
+				end,
+				desc = "Switch to Bedrock",
 				mode = { "n", "v" },
 			},
 		},
