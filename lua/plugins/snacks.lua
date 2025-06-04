@@ -10,6 +10,12 @@ if not vim.g.vscode then
 			bigfile = { enabled = true },
 			words = { enabled = true },
 			dashboard = {
+				enabled = function()
+					-- Don't show dashboard for files in /var/folders/
+					-- this is where ghostty's scrollback buffer in dumped
+					local current_file = vim.fn.expand("%:p")
+					return not current_file("%:p"):match("^/var/folders/")
+				end,
 				formats = {
 					key = function(item)
 						return { { "[", hl = "special" }, { item.key, hl = "key" }, { "]", hl = "special" } }
