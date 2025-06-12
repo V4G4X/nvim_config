@@ -1,3 +1,4 @@
 # Gitlab Account secrets
 gitlab.lua
 .aider*
+.opencode*
