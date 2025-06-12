@@ -13,6 +13,7 @@ if not vim.g.vscode then
         end,
         keys = {
             { "<leader>r",  "",                      desc = "Registers" },
+            { "<leader>t",  "",                      desc = "Toggles" },
             { "<leader>ry", copyRegisterToClipboard, desc = "Yank register to clipboard" },
         },
     }

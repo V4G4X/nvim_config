@@ -21,7 +21,7 @@ if not vim.g.vscode then
 	return {
 		"jbyuki/venn.nvim",
 		keys = {
-			{ "<leader>v", Toggle_venn, desc = "Draw Venn", noremap = true },
+			{ "<leader>tv", Toggle_venn, desc = "Toggle Draw Venn", noremap = true },
 		},
 	}
 end

@@ -75,7 +75,7 @@ if not vim.g.vscode then
             { "<leader>sq", function() Snacks.picker.qflist() end, desc = "Quickfix List" },
             { "<leader>sR", function() Snacks.picker.resume() end, desc = "Resume" },
             { "<leader>su", function() Snacks.picker.undo() end, desc = "Undo History" },
-            { "<leader>uC", function() Snacks.picker.colorschemes() end, desc = "Colorschemes" },
+            { "<leader>sT", function() Snacks.picker.colorschemes() end, desc = "Colorschemes (Themes)" },
             -- LSP
             { "gd",         function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
             { "gD",         function() Snacks.picker.lsp_declarations() end, desc = "Goto Declaration" },

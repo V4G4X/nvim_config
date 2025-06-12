@@ -131,10 +131,9 @@ if not vim.g.vscode then
 			keys = {
 				-- Register groups
 				{ "<leader>l", "", desc = "LSP" },
-				{ "<leader>lT", "", desc = "Toggle" },
 				{ "<leader>lc", "", desc = "Calls" },
 				{ "<leader>ls", "", desc = "Symbols" },
-				{ "<leader>lTd", toggleVirtualLines, desc = "Toggle Diagnostic Lines" },
+				{ "<leader>td", toggleVirtualLines, desc = "Toggle Diagnostic Lines" },
 			},
 			config = function()
 				vim.api.nvim_create_autocmd("LspAttach", {
@@ -147,7 +146,7 @@ if not vim.g.vscode then
 						vim.keymap.set("n", "<leader>lA", vim.lsp.codelens.run, { buffer = event.buf, desc = "CodeLens Action" })
 						vim.keymap.set("n", "<leader>lR", vim.lsp.buf.rename, { buffer = event.buf, desc = "Rename" })
 						vim.keymap.set("n", "<leader>lS", vim.lsp.buf.signature_help, { buffer = event.buf, desc = "Signature" })
-						vim.keymap.set("n", "<leader>lTh", toggleInlayHints, { buffer = event.buf, desc = "Toggle Inlay Hints" })
+						vim.keymap.set("n", "<leader>th", toggleInlayHints, { buffer = event.buf, desc = "Toggle Inlay Hints" })
 						vim.keymap.set({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, { buffer = event.buf, desc = "Code Actions" })
 						vim.keymap.set("n", "<leader>lci", telescopeBuiltin.lsp_incoming_calls, { buffer = event.buf, desc = "Incoming Calls" })
 						vim.keymap.set("n", "<leader>lco", telescopeBuiltin.lsp_outgoing_calls, { buffer = event.buf, desc = "Outgoing Calls" })
