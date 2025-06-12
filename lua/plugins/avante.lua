@@ -8,6 +8,14 @@ if not vim.g.vscode then
 			---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | "bedrock" | string
 			provider = "perplexity",
 			providers = {
+				gpt_41 = {
+					__inherited_from = "openai",
+					model = "gpt-4.1",
+				},
+				o3 = {
+					__inherited_from = "openai",
+					model = "o3",
+				},
 				openrouter_sonnet = {
 					__inherited_from = "openai",
 					api_key_name = "OPENROUTER_API_KEY",
