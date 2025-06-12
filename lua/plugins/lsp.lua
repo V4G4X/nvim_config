@@ -93,6 +93,42 @@ if not vim.g.vscode then
 						nvim_lint.try_lint()
 					end,
 				})
+
+				-- ── Session-local toggle for a single linter ─────────────────────────
+				-- Ask user for a linter name; enable it if missing, disable if present
+				local function toggle_linter(name)
+					if not name or name == "" then
+						return
+					end
+					local ft = vim.bo.filetype
+					nvim_lint.linters_by_ft[ft] = nvim_lint.linters_by_ft[ft] or {}
+					local linters = nvim_lint.linters_by_ft[ft]
+
+					local found_idx
+					for i, l in ipairs(linters) do
+						if l == name then
+							found_idx = i
+							break
+						end
+					end
+
+					if found_idx then
+						table.remove(linters, found_idx)
+						vim.notify("Disabled linter '" .. name .. "' for filetype '" .. ft .. "'")
+						vim.diagnostic.reset(nvim_lint.get_namespace(name), 0) -- 0 = current buf
+					else
+						table.insert(linters, name)
+						vim.notify("Enabled linter '" .. name .. "' for filetype '" .. ft .. "'")
+						nvim_lint.try_lint()
+					end
+				end
+
+				local function prompt_toggle_linter()
+					local name = vim.fn.input("Linter to toggle: ")
+					toggle_linter(name)
+				end
+
+				vim.keymap.set("n", "<leader>tl", prompt_toggle_linter, { desc = "Toggle linter by name", silent = true })
 			end,
 		},
 
