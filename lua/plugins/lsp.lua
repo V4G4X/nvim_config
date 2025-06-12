@@ -76,9 +76,13 @@ if not vim.g.vscode then
 			config = function()
 				-- Configure nvim-lint for linting
 				local nvim_lint = require("lint")
+
+				-- Fixes an issue with cfn_lint where it reports too many Ghost Diagnostics
+				nvim_lint.linters.cfn_lint.stdin = false
+
 				nvim_lint.linters_by_ft = {
 					markdown = { "markdownlint" },
-					yaml = { "yamllint" },
+					yaml = { "yamllint" }, -- cfn_lint and spectral are enabled at Workspace level
 					gitcommit = { "gitlint" },
 					json = { "jsonlint" },
 					-- Add other filetypes and linters as needed
