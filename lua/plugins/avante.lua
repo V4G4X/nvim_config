@@ -6,7 +6,7 @@ if not vim.g.vscode then
 		version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
 		opts = {
 			---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | "bedrock" | string
-			provider = "perplexity",
+			provider = "perp_quick",
 			providers = {
 				gpt_41 = {
 					__inherited_from = "openai",
@@ -28,7 +28,19 @@ if not vim.g.vscode then
 					endpoint = "https://openrouter.ai/api/v1/",
 					model = "google/gemini-2.5-pro-preview",
 				},
-				perplexity = {
+				perp_quick = {
+					__inherited_from = "openai",
+					api_key_name = "PERPLEXITY_API_KEY",
+					endpoint = "https://api.perplexity.ai",
+					model = "sonar-pro",
+				},
+				perp_think = {
+					__inherited_from = "openai",
+					api_key_name = "PERPLEXITY_API_KEY",
+					endpoint = "https://api.perplexity.ai",
+					model = "sonar-reasoning-pro",
+				},
+				perp_r1 = {
 					__inherited_from = "openai",
 					api_key_name = "PERPLEXITY_API_KEY",
 					endpoint = "https://api.perplexity.ai",
