@@ -2,11 +2,11 @@ if not vim.g.vscode then
 	return {
 		"yetone/avante.nvim",
 		event = "VeryLazy",
-		lazy = false,
 		version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
 		opts = {
 			---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | "bedrock" | string
-			provider = "perp_quick",
+			provider = "gpt_41",
+			mode = "agentic",
 			providers = {
 				gpt_41 = {
 					__inherited_from = "openai",
@@ -16,13 +16,7 @@ if not vim.g.vscode then
 					__inherited_from = "openai",
 					model = "o3",
 				},
-				openrouter_sonnet = {
-					__inherited_from = "openai",
-					api_key_name = "OPENROUTER_API_KEY",
-					endpoint = "https://openrouter.ai/api/v1/",
-					model = "anthropic/claude-sonnet-4",
-				},
-				openrouter_flash = {
+				or_gemini = {
 					__inherited_from = "openai",
 					api_key_name = "OPENROUTER_API_KEY",
 					endpoint = "https://openrouter.ai/api/v1/",
@@ -46,13 +40,6 @@ if not vim.g.vscode then
 					endpoint = "https://api.perplexity.ai",
 					model = "r1-1776",
 				},
-				db_sonnet3_7 = {
-					__inherited_from = "bedrock",
-					model = "us.anthropic.claude-sonnet-3-7-20230314-v1:0",
-				},
-				bedrock = {
-					model = "us.anthropic.claude-sonnet-4-20250514-v1:0",
-				},
 			},
 			behaviour = {
 				auto_suggestions = false, -- Experimental stage
@@ -62,6 +49,7 @@ if not vim.g.vscode then
 				support_paste_from_clipboard = true, -- Enable clipboard support for better workflow
 				minimize_diff = true, -- Whether to remove unchanged lines when applying a code block
 				enable_token_counting = false, -- Whether to enable token counting. Default to true.
+				auto_approve_tool_permissions = false,
 			},
 			hints = { enabled = true },
 		},
@@ -112,6 +100,20 @@ if not vim.g.vscode then
 					vim.cmd("AvanteSwitchProvider bedrock")
 				end,
 				desc = "Switch to Bedrock",
+				mode = { "n", "v" },
+			},
+			{
+				"<leader>aA",
+				(function()
+					local is_agentic = true
+					return function()
+						is_agentic = not is_agentic
+						local new_mode = is_agentic and "agentic" or "legacy"
+						require("avante.config").override({ mode = new_mode })
+						vim.notify("Avante mode: " .. new_mode, vim.log.levels.INFO)
+					end
+				end)(),
+				desc = "Toggle Agentic Mode",
 				mode = { "n", "v" },
 			},
 		},
