@@ -53,6 +53,8 @@ if not vim.g.vscode then
 			-- Example lualine setup
 			require("lualine").setup({
 				options = {
+					section_separators = { left = "", right = "" },
+					component_separators = { left = "", right = "" },
 					icons_enabled = true,
 					theme = "auto",
 					globalstatus = true,
