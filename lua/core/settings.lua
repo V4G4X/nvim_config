@@ -8,7 +8,7 @@ vim.opt.expandtab = true
 
 vim.opt.smartindent = true
 
-vim.opt.wrap = false
+vim.opt.wrap = true
 
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
@@ -44,19 +44,6 @@ vim.o.exrc = true
 -- Quickfix navigation mappings
 vim.keymap.set("n", "]q", ":cnext<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "[q", ":cprev<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>q", function()
-	local qf_exists = false
-	for _, win in pairs(vim.fn.getwininfo()) do
-		if win["quickfix"] == 1 then
-			qf_exists = true
-		end
-	end
-	if qf_exists == true then
-		vim.cmd("cclose")
-	else
-		vim.cmd("copen")
-	end
-end, { noremap = true, silent = true, desc = "Toggle quickfix list" })
 
  -- View Diagnostics in style
 vim.diagnostic.config({ virtual_lines = true, severity_sort = true })

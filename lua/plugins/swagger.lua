@@ -10,6 +10,9 @@ if not vim.g.vscode then
                 host = "localhost",
             })
         end,
+        keys = {
+            { "<leader>Ps", "<cmd>SwaggerPreviewToggle<cr>", desc = "Swagger Preview" },
+        },
     }
 end
 

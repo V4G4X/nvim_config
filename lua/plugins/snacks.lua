@@ -46,7 +46,7 @@ if not vim.g.vscode then
             { "<leader>/",       function() Snacks.picker.grep() end, desc = "Grep" },
             { "<leader>N",       function() Snacks.notifier.show_history() end, desc = "Notification History" },
             -- find
-            { "<leader>f",  "", desc = "Files" },
+            { "<leader>f",  "<nop>", desc = "Files" },
             { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
             { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
             { "<leader>ff", function() Snacks.picker.files() end, desc = "Find Files" },
@@ -54,6 +54,7 @@ if not vim.g.vscode then
             { "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
             { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
             -- git
+            { "<leader>g",  "<nop>", desc = "Git" },
             { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
             { "<leader>gl", function() Snacks.picker.git_log() end, desc = "Git Log" },
             { "<leader>gL", function() Snacks.picker.git_log_line() end, desc = "Git Log Line" },

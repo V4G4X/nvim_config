@@ -26,6 +26,7 @@ if not vim.g.vscode then
 		{ -- Install and delete LSPs, Linters and Formatters
 			{
 				"williamboman/mason.nvim",
+				event = "VeryLazy",
 				build = function()
 					pcall(vim.api.nvim_command, "MasonUpdate")
 				end,

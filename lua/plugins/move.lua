@@ -1,6 +1,7 @@
 return {
 	"echasnovski/mini.move",
 	version = "*",
+	event = "VeryLazy",
 	-- No need to copy this inside `setup()`. Will be used automatically.
 	opts = {
 		-- Module mappings. Use `''` (empty string) to disable one.

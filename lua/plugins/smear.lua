@@ -11,7 +11,7 @@ if not vim.g.vscode then
 	end
 	return {
 		"sphamba/smear-cursor.nvim",
-		lazy = false,
+		event = "VeryLazy",
 		opts = {},
 		keys = {
 			{ "<leader>ts", toggle, desc = "Toggle Smear cursor" },

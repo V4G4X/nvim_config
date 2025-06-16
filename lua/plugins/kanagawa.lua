@@ -1,6 +1,7 @@
 if not vim.g.vscode then
     return {
         "rebelot/kanagawa.nvim",
+        lazy = true,
         config = function()
             local theme = "wave"
             require('kanagawa').setup({
