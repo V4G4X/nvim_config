@@ -15,6 +15,7 @@ if not vim.g.vscode then
 				desc = "Add file",
 				ft = { "NvimTree", "neo-tree" },
 			},
+			{ "<C-t>", "<cmd>ClaudeCode<cr>", mode = "t", desc = "Toggle off Claude" },
 		},
 	}
 end
