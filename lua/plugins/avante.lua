@@ -85,7 +85,6 @@ if not vim.g.vscode then
 			},
 		},
 		keys = {
-			{ "<leader>a", "<nop>", desc = "Avante", mode = { "n", "v" } },
 			{
 				"<leader>aC",
 				function()

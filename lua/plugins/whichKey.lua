@@ -33,6 +33,9 @@ if not vim.g.vscode then
 			-- Preview section
 			{ "<leader>P", "<nop>", desc = "Preview" },
 			{ "<leader>ry", CopyRegisterToClipboard, desc = "Yank register to clipboard" },
+			-- AI
+			{ "<leader>a", "<nop>", desc = "Avante", mode = { "n", "v" } },
+			{ "<leader>c", "<nop>", desc = "Claude Code", mode = { "n", "v" } },
 		},
 	}
 end

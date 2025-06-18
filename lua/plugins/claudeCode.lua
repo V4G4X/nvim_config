@@ -3,7 +3,6 @@ if not vim.g.vscode then
 		"coder/claudecode.nvim",
 		config = true,
 		keys = {
-			{ "<leader>c", nil, desc = "Claude Code" },
 			{ "<leader>cc", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
 			{ "<leader>cf", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
 			{ "<leader>cr", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
@@ -12,7 +11,7 @@ if not vim.g.vscode then
 			{
 				"<leader>cs",
 				"<cmd>ClaudeCodeTreeAdd<cr>",
-				desc = "Add file",
+				desc = "Add file to Claude Code",
 				ft = { "NvimTree", "neo-tree" },
 			},
 			{ "<C-t>", "<cmd>ClaudeCode<cr>", mode = "t", desc = "Toggle off Claude" },

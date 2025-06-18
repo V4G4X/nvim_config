@@ -5,8 +5,6 @@ return {
         "shumphrey/fugitive-gitlab.vim"
     },
     keys = {
-        { "<leader>g",  desc = "Git",       mode = { "n", "v" } },
-        { "<leader>gs", vim.cmd.Git,        desc = "Fugitive",       mode = { "n", "v" } },
         { "<leader>gB", "<cmd>GBrowse<CR>", desc = "Open in Browser" },
     },
     config = function()
