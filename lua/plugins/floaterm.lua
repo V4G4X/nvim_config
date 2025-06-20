@@ -3,7 +3,7 @@ if not vim.g.vscode then
 		"nvzone/floaterm",
 		dependencies = "nvzone/volt",
 		opts = {
-			border = false,
+			border = true,
 			size = { h = 80, w = 80 },
 
 			-- to use, make this func(buf)
