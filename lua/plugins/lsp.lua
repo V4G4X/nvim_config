@@ -55,7 +55,7 @@ if not vim.g.vscode then
 						html = { "prettier" },
 						css = { "prettier" },
 						yaml = { "yamlfmt" },
-						markdown = { "mdformat" },
+						markdown = { "prettier" },
 					},
 				})
 			end,
