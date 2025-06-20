@@ -20,7 +20,7 @@ if not vim.g.vscode then
 					__inherited_from = "openai",
 					api_key_name = "OPENROUTER_API_KEY",
 					endpoint = "https://openrouter.ai/api/v1/",
-					model = "google/gemini-2.5-pro-preview",
+					model = "google/gemini-2.5-pro",
 				},
 				perp_quick = {
 					__inherited_from = "openai",
