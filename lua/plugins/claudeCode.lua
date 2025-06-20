@@ -33,8 +33,11 @@ if not vim.g.vscode then
 				"<leader>cs",
 				"<cmd>ClaudeCodeTreeAdd<cr>",
 				desc = "Add file to Claude Code",
-				ft = { "NvimTree", "neo-tree" },
+				ft = { "NvimTree", "neo-tree", "oil" },
 			},
+			-- Diff management
+			{ "<leader>ca", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
+			{ "<leader>cd", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
 		},
 	}
 end
