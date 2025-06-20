@@ -26,7 +26,7 @@ if not vim.g.vscode then
 		{ -- Install and delete LSPs, Linters and Formatters
 			{
 				"williamboman/mason.nvim",
-				event = "VeryLazy",
+				event = { "BufReadPre", "BufNewFile" },
 				build = function()
 					pcall(vim.api.nvim_command, "MasonUpdate")
 				end,
@@ -201,13 +201,7 @@ if not vim.g.vscode then
 					end,
 				})
 
-				local capabilities = require("blink.cmp").get_lsp_capabilities()
-
-				require("lspconfig").gopls.setup({
-					cmd = { "gopls" },
-					filetypes = { "go", "gomod", "gowork", "gotmpl" },
-					capabilities = capabilities,
-					single_file_support = true,
+				vim.lsp.config["gopls"] = {
 					settings = {
 						gopls = {
 							staticcheck = true,
@@ -226,7 +220,8 @@ if not vim.g.vscode then
 							},
 						},
 					},
-				})
+				}
+
 				-- Enable inlay hints
 				vim.api.nvim_create_autocmd("LspAttach", {
 					group = vim.api.nvim_create_augroup("UserLspConfig", {}),
@@ -246,12 +241,7 @@ if not vim.g.vscode then
 					end,
 				})
 
-				vim.lsp.config["luals"] = {
-					-- Command and arguments to start the server.
-					cmd = { "lua-language-server" },
-					-- Filetypes to automatically attach to.
-					filetypes = { "lua" },
-					capabilities = capabilities,
+				vim.lsp.config["lua_ls"] = {
 					settings = {
 						Lua = {
 							diagnostics = {
@@ -261,17 +251,11 @@ if not vim.g.vscode then
 						},
 					},
 				}
-				vim.lsp.enable("luals")
 
-				require("lspconfig").yamlls.setup({
-					capabilities = capabilities,
-				})
-				require("lspconfig").marksman.setup({
-					capabilities = capabilities,
-				})
-				require("lspconfig").pyright.setup({
-					capabilities = capabilities,
-				})
+				require("lspconfig").yamlls.setup({})
+
+				vim.lsp.config("*", { capabilities = require("blink.cmp").get_lsp_capabilities() })
+				vim.lsp.enable({ "gopls", "lua_ls", "yamlls", "marksman", "pyright" })
 			end,
 		},
 	}
