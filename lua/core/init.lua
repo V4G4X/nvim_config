@@ -2,4 +2,4 @@
 require("core.settings")
 
 -- Gitlab Configuration
-require("core.gitlab")
+-- require("core.gitlab")
