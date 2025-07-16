@@ -46,4 +46,4 @@ vim.keymap.set("n", "]q", ":cnext<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "[q", ":cprev<CR>", { noremap = true, silent = true })
 
  -- View Diagnostics in style
-vim.diagnostic.config({ virtual_lines = true, severity_sort = true })
+vim.diagnostic.config({ virtual_text = true, severity_sort = true })
