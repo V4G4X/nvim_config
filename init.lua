@@ -17,7 +17,9 @@ require("plugins")
 -- Load core configurations
 require("core")
 
-if not vim.g.vscode then
-	vim.cmd.colorscheme("kanagawa")
-end
-vim.cmd("hi LineNr guifg=#AAAAAA") -- Set Line Number coloring to be lighter than the theme default
+vim.cmd [[
+  highlight NonText guibg=none
+  highlight Normal guibg=none
+  highlight Normal ctermbg=none
+  highlight NonText ctermbg=none
+]]
