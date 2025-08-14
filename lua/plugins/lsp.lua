@@ -55,6 +55,7 @@ if not vim.g.vscode then
 						html = { "prettier" },
 						css = { "prettier" },
 						yaml = { "yamlfmt" },
+						toml = { "tombi" },
 						markdown = { "prettier" },
 					},
 				})
@@ -252,10 +253,16 @@ if not vim.g.vscode then
 					},
 				}
 
+				vim.lsp.config["tombi"] = {
+					cmd = { "tombi", "lsp" },
+					filetypes = { "toml" },
+					root_markers = { "tombi.toml", "pyproject.toml", ".git" },
+				}
+
 				require("lspconfig").yamlls.setup({})
 
 				vim.lsp.config("*", { capabilities = require("blink.cmp").get_lsp_capabilities() })
-				vim.lsp.enable({ "gopls", "lua_ls", "yamlls", "marksman", "pyright" })
+				vim.lsp.enable({ "gopls", "lua_ls", "yamlls", "marksman", "pyright", "tombi" })
 			end,
 		},
 	}
