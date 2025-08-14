@@ -16,3 +16,13 @@ Don't forget to clone the repo into the following path:
 ```sh
 git clone https://github.com/V4G4X/nvim_config.git ~/.config/nvim
 ```
+
+### SSH-Optimized Version
+
+For servers accessed via SSH where you need a lightweight, fast-loading configuration:
+
+```sh
+git clone -b shh/minimal https://github.com/V4G4X/nvim_config.git ~/.config/nvim
+```
+
+This minimal branch removes AI-powered plugins, visual enhancements, and other resource-intensive features while maintaining core editing functionality for optimal SSH performance.
