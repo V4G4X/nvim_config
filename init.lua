@@ -18,6 +18,6 @@ require("plugins")
 require("core")
 
 if not vim.g.vscode then
-	vim.cmd.colorscheme("kanagawa")
+	vim.cmd.colorscheme("tokyonight")
 end
 vim.cmd("hi LineNr guifg=#AAAAAA") -- Set Line Number coloring to be lighter than the theme default
