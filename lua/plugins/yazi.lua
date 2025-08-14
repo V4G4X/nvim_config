@@ -4,19 +4,11 @@ if not vim.g.vscode then
         "mikavilpas/yazi.nvim",
         event = "VeryLazy",
         keys = {
-            { "<leader>y", "", desc = "Yazi File Manager" },
-            -- 👇 in this section, choose your own keymappings!
             {
                 -- Open in the current working directory
-                "<leader>yy",
+                "<leader>y",
                 "<cmd>Yazi cwd<cr>",
-                desc = "Open the file manager in nvim's working directory",
-            },
-            {
-                "<leader>yt",
-                mode = { "n", "v" },
-                "<cmd>Yazi toggle<cr>",
-                desc = "Open yazi at the current file",
+                desc = "Yazi File Manager",
             },
         },
         ---@type YaziConfig | {}
