@@ -9,35 +9,6 @@ if not vim.g.vscode then
 			image = { enabled = true },
 			bigfile = { enabled = true },
 			words = { enabled = true },
-			dashboard = {
-				enabled = function()
-					-- Don't show dashboard for files in /var/folders/
-					-- this is where ghostty's scrollback buffer in dumped
-					local current_file = vim.fn.expand("%:p")
-					return not current_file("%:p"):match("^/var/folders/")
-				end,
-				formats = {
-					key = function(item)
-						return { { "[", hl = "special" }, { item.key, hl = "key" }, { "]", hl = "special" } }
-					end,
-				},
-				sections = {
-					{
-						section = "terminal",
-						cmd = "fortune -s 40% ~/.quotes/software 30% wisdom 30% humorists | cowsay -f sus -W 40",
-						hl = "header",
-						padding = 1,
-						indent = 8,
-						width = 50,
-						height = 15,
-						ttl = 0,
-					},
-					{ icon = " ", title = "Keymaps", section = "keys", indent = 4, padding = 1 },
-					{ icon = " ", title = "Recent Files", section = "recent_files", indent = 4, padding = 1 },
-					{ icon = " ", title = "Projects", section = "projects", indent = 4, padding = 1 },
-					{ section = "startup" },
-				},
-			},
 		},
         -- stylua: ignore
         keys = {
