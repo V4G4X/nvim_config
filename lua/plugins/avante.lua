@@ -8,13 +8,28 @@ if not vim.g.vscode then
 			provider = "gpt_41",
 			mode = "agentic",
 			providers = {
+				gpt5 = {
+					__inherited_from = "openai",
+					model = "gpt-5",
+					extra_request_body = {
+						temperature = 1,
+						reasoning_effort = "low",
+					},
+				},
 				gpt_41 = {
 					__inherited_from = "openai",
 					model = "gpt-4.1",
 				},
+				o4_mini = {
+					__inherited_from = "openai",
+					model = "o4-mini",
+				},
 				o3 = {
 					__inherited_from = "openai",
 					model = "o3",
+					extra_request_body = {
+						reasoning_effort = "high",
+					},
 				},
 				or_gemini = {
 					__inherited_from = "openai",
