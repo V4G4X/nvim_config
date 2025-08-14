@@ -1,28 +1,4 @@
 if not vim.g.vscode then
-	-- Async dashboard header. fortune+cowsay costs ~20-50ms against an ~90ms
-	-- startup, so it must not block UIEnter; and running it in a pty (the
-	-- built-in "terminal" section) buys nothing for plain ASCII while forcing a
-	-- fixed height and printing "[Process exited 0]" when the job ends.
-	-- Resolves to nothing on the first pass, then redraws once the job lands.
-	local quote, spawned ---@type string?, boolean?
-	local function quote_section()
-		if quote then
-			return { text = { quote, hl = "header" }, padding = 1, indent = 8 }
-		end
-		if not spawned then
-			spawned = true
-			vim.system({
-				"sh",
-				"-c",
-				"fortune -s 40% ~/.quotes/software 30% wisdom 30% humorists | cowsay -f sus -W 45",
-			}, { text = true }, function(res)
-				quote = (res.stdout or ""):gsub("%s*$", "")
-				vim.schedule(Snacks.dashboard.update)
-			end)
-		end
-		return {}
-	end
-
 	return {
 		"folke/snacks.nvim",
 		lazy = false,
@@ -52,26 +28,6 @@ if not vim.g.vscode then
 			image = { enabled = true },
 			bigfile = { enabled = true },
 			words = { enabled = true },
-			dashboard = {
-				enabled = function()
-					-- Don't show dashboard for files in /var/folders/
-					-- this is where ghostty's scrollback buffer in dumped
-					local current_file = vim.fn.expand("%:p")
-					return not current_file("%:p"):match("^/var/folders/")
-				end,
-				formats = {
-					key = function(item)
-						return { { "[", hl = "special" }, { item.key, hl = "key" }, { "]", hl = "special" } }
-					end,
-				},
-				sections = {
-					quote_section,
-					{ icon = " ", title = "Keymaps", section = "keys", indent = 4, padding = 1 },
-					{ icon = " ", title = "Recent Files", section = "recent_files", indent = 4, padding = 1 },
-					{ icon = " ", title = "Projects", section = "projects", indent = 4, padding = 1 },
-					{ section = "startup" },
-				},
-			},
 		},
         -- stylua: ignore
         keys = {
