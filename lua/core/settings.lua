@@ -47,3 +47,6 @@ vim.keymap.set("n", "[q", ":cprev<CR>", { noremap = true, silent = true })
 
  -- View Diagnostics in style
 vim.diagnostic.config({ virtual_lines = true, severity_sort = true })
+
+-- Terminal mode exit with Alt+n
+vim.keymap.set('t', '<A-n>', [[<C-\><C-n>]], { desc = 'Exit terminal mode' })

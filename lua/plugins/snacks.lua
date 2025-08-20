@@ -71,6 +71,7 @@ if not vim.g.vscode then
             { "<leader>sc", function() Snacks.picker.commands() end, desc = "Commands" },
             { "<leader>sC", function() Snacks.picker.command_history() end, desc = "Command History" },
             { "<leader>sh", function() Snacks.picker.help() end, desc = "Help Pages" },
+            { "<leader>sj", function() Snacks.picker.jumps() end, desc = "Jump List" },
             { "<leader>sk", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
             { "<leader>sm", function() Snacks.picker.marks() end, desc = "Marks" },
             { "<leader>sq", function() Snacks.picker.qflist() end, desc = "Quickfix List" },
