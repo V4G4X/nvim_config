@@ -5,9 +5,21 @@ if not vim.g.vscode then
 		version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
 		opts = {
 			---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | "bedrock" | string
-			provider = "gpt_41",
+			provider = "or_devstral",
 			mode = "agentic",
 			providers = {
+				or_devstral = {
+					__inherited_from = "openai",
+					api_key_name = "OPENROUTER_API_KEY",
+					endpoint = "https://openrouter.ai/api/v1/",
+					model = "mistralai/devstral-medium",
+				},
+				grok_fast = {
+					__inherited_from = "openai",
+					endpoint = "https://api.x.ai/v1/",
+					api_key_name = "XAI_API_KEY",
+					model = "grok-4-fast-reasoning",
+				},
 				gpt5 = {
 					__inherited_from = "openai",
 					model = "gpt-5",
@@ -15,6 +27,10 @@ if not vim.g.vscode then
 						temperature = 1,
 						reasoning_effort = "low",
 					},
+				},
+				gpt_5_codex = {
+					__inherited_from = "openai",
+					model = "gpt-5-codex",
 				},
 				gpt_41 = {
 					__inherited_from = "openai",
