@@ -16,7 +16,7 @@ if not vim.g.vscode then
 					auto_trigger_ft = { "*" },
 					keymap = {
 						-- accept whole completion
-						accept = "<Tab>",
+						accept = "<S-Tab>",
 						-- accept one line
 						accept_line = "<A-a>",
 						-- accept n lines (prompts for number)
