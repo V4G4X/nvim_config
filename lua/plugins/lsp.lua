@@ -58,6 +58,7 @@ if not vim.g.vscode then
 						toml = { "tombi" },
 						markdown = { "prettier" },
 						sh = { "shfmt", "beautysh" },
+						groovy = { "npm-groovy-lint" },
 					},
 				})
 			end,
@@ -254,34 +255,28 @@ if not vim.g.vscode then
 					},
 				}
 
-				vim.lsp.config["tombi"] = {
-					cmd = { "tombi", "lsp" },
-					filetypes = { "toml" },
-					root_markers = { "tombi.toml", "pyproject.toml", ".git" },
+				vim.lsp.config["groovyls"] = {
+					cmd = { "groovy-language-server" },
+					filetypes = { "groovy" },
+					root_markers = { "Jenkinsfile", ".git" },
 				}
+				vim.filetype.add({
+					filename = { [".jenkinsfile"] = "groovy" },
+					extension = { jenkinsfile = "groovy" },
+				})
 
-				vim.lsp.config["bashls"] = {
-					cmd = { "bash-language-server", "start" },
-					settings = {
-						bashIde = {
-							-- Glob pattern for finding and parsing shell script files in the workspace.
-							-- Used by the background analysis features across files.
-
-							-- Prevent recursive scanning which will cause issues when opening a file
-							-- directly in the home directory (e.g. ~/foo.sh).
-							--
-							-- Default upstream pattern is "**/*@(.sh|.inc|.bash|.command)".
-							globPattern = vim.env.GLOB_PATTERN or "*@(.sh|.inc|.bash|.command)",
-						},
-					},
-					filetypes = { "bash", "sh" },
+				vim.lsp.config["yamlls"] = {
+					cmd = { "yaml-language-server", "--stdio" },
+					filetypes = { "yaml", "yaml.docker-compose", "yaml.gitlab", "yaml.helm-values" },
 					root_markers = { ".git" },
+					settings = {
+						redhat = { telemetry = { enabled = false } },
+						yaml = { validate = false },
+					},
 				}
-
-				require("lspconfig").yamlls.setup({})
 
 				vim.lsp.config("*", { capabilities = require("blink.cmp").get_lsp_capabilities() })
-				vim.lsp.enable({ "gopls", "lua_ls", "yamlls", "marksman", "pyright", "tombi", "bashls" })
+				vim.lsp.enable({ "gopls", "lua_ls", "yamlls", "marksman", "pyright", "tombi", "bashls", "groovyls" })
 			end,
 		},
 	}
