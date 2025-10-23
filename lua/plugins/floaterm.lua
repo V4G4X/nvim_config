@@ -2,6 +2,7 @@ if not vim.g.vscode then
 	return {
 		"nvzone/floaterm",
 		dependencies = "nvzone/volt",
+		enabled = false,
 		opts = {
 			border = true,
 			size = { h = 80, w = 80 },
