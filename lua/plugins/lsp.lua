@@ -34,7 +34,53 @@ if not vim.g.vscode then
 					require("mason").setup()
 				end,
 			},
-			{ "williamboman/mason-lspconfig.nvim" }, -- Optional
+			{
+				"williamboman/mason-lspconfig.nvim",
+				config = function()
+					require("mason-lspconfig").setup({
+						ensure_installed = {
+							"gopls",
+							"lua_ls",
+							"yamlls",
+							"marksman",
+							"pyright",
+							"tombi",
+							"bashls",
+							"groovyls",
+						},
+						automatic_installation = true,
+					})
+				end,
+			},
+			{
+				"WhoIsSethDaniel/mason-tool-installer.nvim",
+				dependencies = { "williamboman/mason.nvim" },
+				config = function()
+					require("mason-tool-installer").setup({
+						ensure_installed = {
+							-- Formatters
+							"stylua",
+							"ruff",
+							"goimports",
+							"gofumpt",
+							"prettier",
+							"fixjson",
+							"yamlfmt",
+							"taplo",
+							"shfmt",
+							"beautysh",
+							"npm-groovy-lint",
+							-- Linters
+							"markdownlint",
+							"yamllint",
+							"gitlint",
+							"jsonlint",
+						},
+						auto_update = true,
+						run_on_start = true,
+					})
+				end,
+			},
 		},
 
 		{ -- Formatting
@@ -276,7 +322,16 @@ if not vim.g.vscode then
 				}
 
 				vim.lsp.config("*", { capabilities = require("blink.cmp").get_lsp_capabilities() })
-				vim.lsp.enable({ "gopls", "lua_ls", "yamlls", "marksman", "pyright", "tombi", "bashls", "groovyls" })
+				vim.lsp.enable({
+					"gopls",
+					"lua_ls",
+					"yamlls",
+					"marksman",
+					"pyright",
+					"tombi",
+					"bashls",
+					"groovyls",
+				})
 			end,
 		},
 	}
