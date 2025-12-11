@@ -59,6 +59,7 @@ if not vim.g.vscode then
 					require("mason-tool-installer").setup({
 						ensure_installed = {
 							-- Formatters
+							"darker",
 							"stylua",
 							"ruff",
 							"goimports",
@@ -89,6 +90,13 @@ if not vim.g.vscode then
 			config = function()
 				-- Configure conform.nvim for formatting
 				require("conform").setup({
+					formatters = {
+						darker = {
+							command = "uvx",
+							args = { "--with", "ruff", "darker", "--stdin-filename", "$FILENAME", "-" },
+							stdin = true,
+						},
+					},
 					formatters_by_ft = {
 						lua = { "stylua" },
 						python = { "ruff_format", "ruff_organize_imports" },
@@ -119,6 +127,50 @@ if not vim.g.vscode then
 				},
 			},
 		},
+
+		-- Custom Format command with formatter argument
+		(function()
+			vim.api.nvim_create_user_command("Format", function(opts)
+				require("conform").format({
+					async = true,
+					timeout_ms = 3000,
+					formatters = { opts.args },
+				}, function()
+					vim.cmd("checktime")
+				end)
+			end, {
+				nargs = 1,
+				desc = "Format with specified formatter",
+				complete = function()
+					local formatters = require("conform").list_all_formatters()
+					local names = {}
+					for _, f in ipairs(formatters) do
+						table.insert(names, f.name)
+					end
+					return names
+				end,
+			})
+			return {}
+		end)(),
+
+		-- Darker keymap for Python
+		(function()
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = "python",
+				callback = function()
+					vim.keymap.set("n", "<leader>lF", function()
+						require("conform").format({
+							async = true,
+							timeout_ms = 3000,
+							formatters = { "darker" },
+						}, function()
+							vim.cmd("checktime")
+						end)
+					end, { buffer = true, desc = "Format with Darker" })
+				end,
+			})
+			return {}
+		end)(),
 
 		{ -- Linting
 			"mfussenegger/nvim-lint", -- Replace null-ls for linting
