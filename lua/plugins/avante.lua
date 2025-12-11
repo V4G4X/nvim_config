@@ -5,9 +5,13 @@ if not vim.g.vscode then
 		version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
 		opts = {
 			---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | "bedrock" | string
-			provider = "or_devstral",
+			provider = "haiku",
 			mode = "agentic",
 			providers = {
+				haiku = {
+					__inherited_from = "claude",
+					model = "claude-haiku-4-5", -- ensure this is the correct model name for Haiku 4.5 in your region/account
+				},
 				or_devstral = {
 					__inherited_from = "openai",
 					api_key_name = "OPENROUTER_API_KEY",
