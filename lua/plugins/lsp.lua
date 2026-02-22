@@ -45,6 +45,7 @@ if not vim.g.vscode then
 							"marksman",
 							"pyrefly",
 							"tombi",
+							"vtsls",
 							"bashls",
 							"groovyls",
 						},
@@ -381,9 +382,13 @@ if not vim.g.vscode then
 					"marksman",
 					"pyrefly",
 					"tombi",
+					"vtsls",
 					"bashls",
 					"groovyls",
 				})
+				vim.lsp.enable({
+					"spectral",
+				}, false)
 			end,
 		},
 	}
