@@ -24,51 +24,6 @@ if not vim.g.vscode then
 					api_key_name = "XAI_API_KEY",
 					model = "grok-4-fast-reasoning",
 				},
-				gpt5 = {
-					__inherited_from = "openai",
-					model = "gpt-5",
-					extra_request_body = {
-						temperature = 1,
-						reasoning_effort = "low",
-					},
-				},
-				gpt_5_codex = {
-					__inherited_from = "openai",
-					model = "gpt-5-codex",
-				},
-				gpt_41 = {
-					__inherited_from = "openai",
-					model = "gpt-4.1",
-				},
-				o4_mini = {
-					__inherited_from = "openai",
-					model = "o4-mini",
-				},
-				o3 = {
-					__inherited_from = "openai",
-					model = "o3",
-					extra_request_body = {
-						reasoning_effort = "high",
-					},
-				},
-				or_gemini = {
-					__inherited_from = "openai",
-					api_key_name = "OPENROUTER_API_KEY",
-					endpoint = "https://openrouter.ai/api/v1/",
-					model = "google/gemini-2.5-pro",
-				},
-				perp_quick = {
-					__inherited_from = "openai",
-					api_key_name = "PERPLEXITY_API_KEY",
-					endpoint = "https://api.perplexity.ai",
-					model = "sonar-pro",
-				},
-				perp_think = {
-					__inherited_from = "openai",
-					api_key_name = "PERPLEXITY_API_KEY",
-					endpoint = "https://api.perplexity.ai",
-					model = "sonar-reasoning-pro",
-				},
 				perp_r1 = {
 					__inherited_from = "openai",
 					api_key_name = "PERPLEXITY_API_KEY",
