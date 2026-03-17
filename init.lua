@@ -17,7 +17,7 @@ require("plugins")
 -- Load core configurations
 require("core")
 
-if not vim.g.vscode then
-	vim.cmd.colorscheme("tokyonight")
-end
+-- Theme/Color setup
+vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
+vim.cmd("hi NormalFloat guibg=NONE ctermbg=NONE")
 vim.cmd("hi LineNr guifg=#AAAAAA") -- Set Line Number coloring to be lighter than the theme default
