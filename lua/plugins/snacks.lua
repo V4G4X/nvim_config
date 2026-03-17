@@ -4,7 +4,26 @@ if not vim.g.vscode then
 		lazy = false,
 		priority = 1000,
 		opts = {
-			picker = { layout = "bottom" },
+			picker = {
+				layout = {
+					layout = {
+						box = "vertical",
+						backdrop = false,
+						row = -1,
+						width = 0,
+						height = 0.8,
+						border = "top",
+						title = " {title} {live} {flags}",
+						title_pos = "left",
+						{ win = "input", height = 1, border = "bottom" },
+						{
+							box = "horizontal",
+							{ win = "list", border = "none" },
+							{ win = "preview", title = "{preview}", width = 0.7, border = "left" },
+						},
+					},
+				},
+			},
 			notifier = { enabled = true },
 			image = { enabled = true },
 			bigfile = { enabled = true },
