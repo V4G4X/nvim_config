@@ -60,6 +60,7 @@ if not vim.g.vscode then
 					require("mason-tool-installer").setup({
 						ensure_installed = {
 							-- Formatters
+							"clang-format",
 							"darker",
 							"stylua",
 							"ruff",
@@ -99,6 +100,7 @@ if not vim.g.vscode then
 						},
 					},
 					formatters_by_ft = {
+						c = { "clang-format" },
 						lua = { "stylua" },
 						python = { "ruff_format", "ruff_organize_imports" },
 						go = { "goimports", "gofumpt" },
@@ -377,6 +379,7 @@ if not vim.g.vscode then
 
 				vim.lsp.config("*", { capabilities = require("blink.cmp").get_lsp_capabilities() })
 				vim.lsp.enable({
+					"clangd",
 					"gopls",
 					"lua_ls",
 					"yamlls",
