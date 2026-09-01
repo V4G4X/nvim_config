@@ -5,10 +5,18 @@ if not vim.g.vscode then
 		config = function()
 			require("markdown_preview").setup({
 				-- all optional; sane defaults shown
-				instance_mode = "takeover", -- "takeover" (one tab) or "multi" (tab per instance)
+				instance_mode = "multi", -- "takeover" (one tab) or "multi" (tab per instance)
 				port = 0, -- 0 = auto (8421 for takeover, OS-assigned for multi)
 				open_browser = true,
 				debounce_ms = 300,
+				hooks = {
+					on_start = function(url)
+						vim.notify("Preview started: " .. url, vim.log.levels.INFO)
+					end,
+					on_stop = function()
+						vim.notify("Preview stopped", vim.log.levels.INFO)
+					end,
+				},
 			})
 
 			local mp = require("markdown_preview")
